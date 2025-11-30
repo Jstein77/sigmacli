@@ -1,0 +1,59 @@
+name: Update Data Models
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'data-models/**/*.yaml'
+      - 'data-models/**/*.yml'
+  workflow_dispatch:
+
+jobs:
+  update-data-models:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install sigmoid package
+        run: |
+          python -m pip install --upgrade pip
+          pip install git+https://github.com/sigmacomputing/sigmoid.git
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run update script
+        env:
+          SIGMA_CLIENT_ID: ${{ secrets.SIGMA_CLIENT_ID }}
+          SIGMA_SECRET: ${{ secrets.SIGMA_SECRET }}
+          SIGMA_ORIGIN: ${{ secrets.SIGMA_ORIGIN }}
+        run: |
+          python src/update_changed_data_models.py
+
+      - name: Commit changes
+        if: success()
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data-models/
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update data models with server metadata
+
+          Generated with [Claude Code](https://claude.com/claude-code)
+
+          Co-Authored-By: Claude <noreply@anthropic.com>"
+            git push
+          fi
