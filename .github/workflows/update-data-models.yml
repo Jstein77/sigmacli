@@ -42,11 +42,11 @@ jobs:
           # Find the Python lib directory
           PYTHON_LIB_DIR=$(python -c "import sys; print(sys.prefix + '/lib/python' + '.'.join(map(str, sys.version_info[:2])))")
 
-          # Create credentials file
+          # Create credentials file in YAML format
           cat > "$PYTHON_LIB_DIR/basic-credentials.txt" << EOF
-          ${{ secrets.SIGMA_CLIENT_ID }}
-          ${{ secrets.SIGMA_SECRET }}
-          ${{ secrets.SIGMA_ORIGIN }}
+          client: ${{ secrets.SIGMA_CLIENT_ID }}
+          secret: ${{ secrets.SIGMA_SECRET }}
+          origin: ${{ secrets.SIGMA_ORIGIN }}
           EOF
 
           echo "Created credentials file at $PYTHON_LIB_DIR/basic-credentials.txt"
