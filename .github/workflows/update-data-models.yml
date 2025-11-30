@@ -39,17 +39,14 @@ jobs:
 
       - name: Create credentials file
         run: |
-          # Find the Python lib directory
-          PYTHON_LIB_DIR=$(python -c "import sys; print(sys.prefix + '/lib/python' + '.'.join(map(str, sys.version_info[:2])))")
-
-          # Create credentials file in YAML format
-          cat > "$PYTHON_LIB_DIR/basic-credentials.txt" << EOF
+          # Create credentials file in the working directory where the script runs
+          cat > basic-credentials.txt << EOF
           client: ${{ secrets.SIGMA_CLIENT_ID }}
           secret: ${{ secrets.SIGMA_SECRET }}
           origin: ${{ secrets.SIGMA_ORIGIN }}
           EOF
 
-          echo "Created credentials file at $PYTHON_LIB_DIR/basic-credentials.txt"
+          echo "Created credentials file at $(pwd)/basic-credentials.txt"
 
       - name: Run update script
         run: |
