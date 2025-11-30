@@ -47,7 +47,7 @@ jobs:
           production:
             client: ${{ secrets.SIGMA_CLIENT_ID }}
             secret: ${{ secrets.SIGMA_SECRET }}
-            url: ${{ secrets.SIGMA_URL }}
+            url: ${{ secrets.SIGMA_ORIGIN }}
           EOF
 
           echo "Created credentials file at $SIGMOID_DIR/basic-credentials.txt"
