@@ -41,9 +41,12 @@ jobs:
         run: |
           # Create credentials file in the working directory where the script runs
           cat > basic-credentials.txt << EOF
-          client: ${{ secrets.SIGMA_CLIENT_ID }}
-          secret: ${{ secrets.SIGMA_SECRET }}
-          origin: ${{ secrets.SIGMA_ORIGIN }}
+          default: production
+
+          production:
+            client: ${{ secrets.SIGMA_CLIENT_ID }}
+            secret: ${{ secrets.SIGMA_SECRET }}
+            url: ${{ secrets.SIGMA_URL }}
           EOF
 
           echo "Created credentials file at $(pwd)/basic-credentials.txt"
