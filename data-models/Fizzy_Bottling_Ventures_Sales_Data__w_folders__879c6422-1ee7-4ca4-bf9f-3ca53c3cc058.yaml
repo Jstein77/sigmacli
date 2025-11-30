@@ -1,0 +1,219 @@
+dataModelId: 879c6422-1ee7-4ca4-bf9f-3ca53c3cc058
+name: Fizzy Bottling Ventures Sales Data (w folders)
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Fizzy-Bottling-Ventures-Sales-Data-w-folders-47TqYvGiTw6WHN0al0VKTS
+documentVersion: 17
+latestDocumentVersion: 17
+schemaVersion: 1
+ownerId: 3JHDIIPo0Q42Eys4dJ4X1NzGpXdmF
+folderId: d3e6dc24-144c-43cd-ae51-a922aad74911
+createdBy: 3JHDIIPo0Q42Eys4dJ4X1NzGpXdmF
+updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+createdAt: '2025-06-04T15:46:23.493Z'
+updatedAt: '2025-11-25T01:11:54.815Z'
+pages:
+- id: 95sxlDQ66A
+  name: Page 1
+  elements:
+  - id: Pez_IL3Qiy
+    name: SALES_FACTS
+    kind: table
+    source:
+      connectionId: a9d45cfe-ff65-4515-8193-a7072602a1ee
+      kind: warehouse-table
+      path:
+      - SE_INTERNAL_DB
+      - SCHEMA_KT
+      - SALES_FACTS
+    columns:
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/TRANSACTION_ID
+      name: Transaction Id
+      formula: '[SALES_FACTS/Transaction Id]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/DATE_ID
+      name: Date Id
+      formula: '[SALES_FACTS/Date Id]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/PRODUCT_ID
+      name: Product Id
+      formula: '[SALES_FACTS/Product Id]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/CUSTOMER_ID
+      name: Customer Id
+      formula: '[SALES_FACTS/Customer Id]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/TERRITORY_ID
+      name: Territory Id
+      formula: '[SALES_FACTS/Territory Id]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/NET_PRICE
+      name: Net Price
+      formula: '[SALES_FACTS/Net Price]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/GROSS_PRICE
+      name: Gross Price
+      formula: '[SALES_FACTS/Gross Price]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/MARGIN_DOLLARS
+      name: Margin
+      formula: '[SALES_FACTS/Margin Dollars] * 0.05'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/COGS
+      name: Cost
+      formula: '[SALES_FACTS/Cogs]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/DISCOUNT_AMOUNT
+      name: Discount Amount
+      formula: '[SALES_FACTS/Discount Amount]'
+    - id: inode-24wwAFSUy5Ikq715wvgIoL/CASES_SOLD
+      name: Packages Sold
+      formula: Round([SALES_FACTS/Cases Sold] * 0.05)
+  - id: u0TnyN_3gH
+    name: CUSTOMER_HIERARCHY
+    kind: table
+    source:
+      connectionId: a9d45cfe-ff65-4515-8193-a7072602a1ee
+      kind: warehouse-table
+      path:
+      - SE_INTERNAL_DB
+      - SCHEMA_KT
+      - CUSTOMER_HIERARCHY
+    columns:
+    - id: HeBxQxH6Uw
+      name: Customer Id
+      formula: '[CUSTOMER_HIERARCHY/Customer Id]'
+    - id: oCow3cLm4s
+      name: Customer Name
+      formula: '[CUSTOMER_HIERARCHY/Customer Name]'
+    - id: OoxDw7ovui
+      name: Store Number
+      formula: '[CUSTOMER_HIERARCHY/Store Number]'
+    - id: FelcghoCUx
+      name: Address
+      formula: '[CUSTOMER_HIERARCHY/Address]'
+    - id: H9TQlzfZzL
+      name: City
+      formula: '[CUSTOMER_HIERARCHY/City]'
+    - id: bVRV3asPhY
+      name: Business Unit
+      formula: '[CUSTOMER_HIERARCHY/Business Unit]'
+    - id: c2nYpLUvNN
+      name: Key Account
+      formula: '[CUSTOMER_HIERARCHY/Key Account]'
+    - id: 1Dy9lYda92
+      name: Account Type
+      formula: '[CUSTOMER_HIERARCHY/Account Type]'
+    - id: xcxVgRTRac
+      name: Parent Company
+      formula: '[CUSTOMER_HIERARCHY/Parent Company]'
+    - id: MBDYbE7GBR
+      name: Territory Id
+      formula: '[CUSTOMER_HIERARCHY/Territory Id]'
+    - id: h1cM-SQ5Zy
+      name: Avg Volume Tier
+      formula: '[CUSTOMER_HIERARCHY/Avg Volume Tier]'
+  - id: LbS4vQLXRG
+    name: DATE_HIERARCHY
+    kind: table
+    source:
+      connectionId: a9d45cfe-ff65-4515-8193-a7072602a1ee
+      kind: warehouse-table
+      path:
+      - SE_INTERNAL_DB
+      - SCHEMA_KT
+      - DATE_HIERARCHY
+    columns:
+    - id: 3XKGwJs2wN
+      name: Date Id
+      formula: '[DATE_HIERARCHY/Date Id]'
+    - id: oUB6OB1m6u
+      name: Full Date
+      formula: '[DATE_HIERARCHY/Full Date]'
+    - id: 17TGN-_PZf
+      name: Year
+      formula: '[DATE_HIERARCHY/Year]'
+    - id: R2U8WHEb8T
+      name: Quarter
+      formula: '[DATE_HIERARCHY/Quarter]'
+    - id: kVqGFSvyn-
+      name: Month
+      formula: '[DATE_HIERARCHY/Month]'
+    - id: DpXr9x4pbl
+      name: Day
+      formula: '[DATE_HIERARCHY/Day]'
+    - id: 47dpWk-shE
+      name: Week Number
+      formula: '[DATE_HIERARCHY/Week Number]'
+    - id: k3JNbeU2tB
+      name: Day of Week
+      formula: '[DATE_HIERARCHY/Day of Week]'
+    - id: o5wxD4dhYo
+      name: Day Name
+      formula: '[DATE_HIERARCHY/Day Name]'
+    - id: 32RgQWZK8Z
+      name: Month Name
+      formula: '[DATE_HIERARCHY/Month Name]'
+    - id: ltxiFktx7v
+      name: Fiscal Year
+      formula: '[DATE_HIERARCHY/Fiscal Year]'
+    - id: NkocAIwzFA
+      name: Fiscal Quarter
+      formula: '[DATE_HIERARCHY/Fiscal Quarter]'
+    - id: CU9E5i_NC1
+      name: Fiscal Period
+      formula: '[DATE_HIERARCHY/Fiscal Period]'
+    - id: FtTWSnfMMV
+      name: Season
+      formula: '[DATE_HIERARCHY/Season]'
+    - id: 05IFuWLUe8
+      name: Is Weekend
+      formula: '[DATE_HIERARCHY/Is Weekend]'
+    - id: 3xTdni3mKZ
+      name: Is Holiday
+      formula: '[DATE_HIERARCHY/Is Holiday]'
+    - id: Ep8csnlbWs
+      name: Holiday Name
+      formula: '[DATE_HIERARCHY/Holiday Name]'
+    - id: EV_gGAhqaO
+      name: Year Month
+      formula: '[DATE_HIERARCHY/Year Month]'
+    - id: M1a8CzxpB6
+      name: Year Quarter
+      formula: '[DATE_HIERARCHY/Year Quarter]'
+    - id: cDgwWeZx8Q
+      name: Days in Month
+      formula: '[DATE_HIERARCHY/Days in Month]'
+  - id: oYSwZSKOY2
+    name: PRODUCT_HIERARCHY
+    kind: table
+    source:
+      connectionId: a9d45cfe-ff65-4515-8193-a7072602a1ee
+      kind: warehouse-table
+      path:
+      - SE_INTERNAL_DB
+      - SCHEMA_KT
+      - PRODUCT_HIERARCHY
+    columns:
+    - id: cutPcfANZo
+      name: Product Id
+      formula: '[PRODUCT_HIERARCHY/Product Id]'
+    - id: AtgeRmCb9q
+      name: Product Name
+      formula: '[PRODUCT_HIERARCHY/Product Name]'
+    - id: 5_RSSnSfqu
+      name: Package Desc
+      formula: '[PRODUCT_HIERARCHY/Package Desc]'
+    - id: TWcgTwTlHZ
+      name: Package Size
+      formula: '[PRODUCT_HIERARCHY/Package Size]'
+    - id: EIyqrEm-ZH
+      name: Unit Type
+      formula: '[PRODUCT_HIERARCHY/Unit Type]'
+    - id: mloR9Y6ixv
+      name: Category
+      formula: '[PRODUCT_HIERARCHY/Category]'
+    - id: DqHtwFUYgV
+      name: Brand Name
+      formula: '[PRODUCT_HIERARCHY/Brand Name]'
+    - id: RaO4dZceYc
+      name: Brand Category
+      formula: '[PRODUCT_HIERARCHY/Brand Category]'
+    - id: z62GMblDdK
+      name: Margin Tier
+      formula: '[PRODUCT_HIERARCHY/Margin Tier]'
+    - id: Ib80pEPzvo
+      name: Volume Share
+      formula: '[PRODUCT_HIERARCHY/Volume Share]'
+    - id: 0a3A5k5pZ5
+      name: Price Tier
+      formula: '[PRODUCT_HIERARCHY/Price Tier]'

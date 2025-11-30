@@ -1,0 +1,143 @@
+dataModelId: ad8ed804-cae8-4890-a987-7c04fde78fcd
+name: Bootcamp Data Model
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Bootcamp-Data-Model-5huX2Wq0YpjRGUafkZtJVz
+documentVersion: 8
+latestDocumentVersion: 8
+schemaVersion: 1
+ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+folderId: 7b702d72-5948-4fde-93e4-7cff1f64255a
+createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+createdAt: '2025-11-24T22:37:37.187Z'
+updatedAt: '2025-11-25T01:12:09.462Z'
+pages:
+- id: P2ykpKuG2h
+  name: Sales & Inventory Union
+  elements: []
+- id: UhUk6Ji26E
+  name: ERD
+  elements:
+  - id: 76hjLn4yHc
+    name: D_PRODUCT
+    kind: table
+    source:
+      connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+      kind: warehouse-table
+      path:
+      - RETAIL
+      - PLUGS_ELECTRONICS
+      - D_PRODUCT
+    columns:
+    - id: FXh5GYVbdZ
+      name: Product Key
+      formula: '[D_PRODUCT/Product Key]'
+    - id: 5gqKlAvxi8
+      name: Product Name
+      formula: '[D_PRODUCT/Product Name]'
+    - id: Cxj4VQl-0d
+      name: Product Type
+      formula: '[D_PRODUCT/Product Type]'
+    - id: x_YOWh0u2H
+      name: Product Family
+      formula: '[D_PRODUCT/Product Family]'
+    - id: 8C8zP6rsqj
+      name: Product Line
+      formula: '[D_PRODUCT/Product Line]'
+    - id: XwhIwpIAhR
+      name: Product Group
+      formula: '[D_PRODUCT/Product Group]'
+    - id: _H2JQOBUpe
+      name: Product Description
+      formula: '[D_PRODUCT/Product Description]'
+    - id: OeKpxcO7U5
+      name: Sku Number
+      formula: '[D_PRODUCT/Sku Number]'
+    - id: pynBC5XgdW
+      name: Price
+      formula: '[D_PRODUCT/Price]'
+    - id: e0AaERvPE8
+      name: Product Status
+      formula: '[D_PRODUCT/Product Status]'
+    - id: dhORXpBfry
+      name: Product Notes
+      formula: '[D_PRODUCT/Product Notes]'
+    - id: -O9_xoR1i8
+      name: Updated At
+      formula: '[D_PRODUCT/Updated At]'
+    - id: U2tH6DFGWt
+      name: Updated By
+      formula: '[D_PRODUCT/Updated By]'
+    - id: Rcq_XPQTLG
+      name: Proposed Price
+      formula: '[D_PRODUCT/Proposed Price]'
+    - id: my_id
+      name: Proposed Price + 1
+      formula: '[D_PRODUCT/Proposed Price] + 1'
+    - id: my_id_2
+      name: Proposed Price + Product Key
+      formula: '[D_PRODUCT/Proposed Price] + [D_PRODUCT/Product Key]'
+  - id: WnRX4IxGPP
+    name: D_CUSTOMER
+    kind: table
+    source:
+      connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+      kind: warehouse-table
+      path:
+      - RETAIL
+      - PLUGS_ELECTRONICS
+      - D_CUSTOMER
+    columns:
+    - id: indO1MEWNM
+      name: Cust Key
+      formula: '[D_CUSTOMER/Cust Key]'
+    - id: pA3K-g6I4P
+      name: Cust Name
+      formula: '[D_CUSTOMER/Cust Name]'
+    - id: 2s97YY1w6M
+      name: Cust Address
+      formula: '[D_CUSTOMER/Cust Address]'
+    - id: tKAqyzOnRH
+      name: Cust City
+      formula: '[D_CUSTOMER/Cust City]'
+    - id: crTUYXacf_
+      name: Cust State
+      formula: '[D_CUSTOMER/Cust State]'
+    - id: 3s9WVKTaNS
+      name: Cust Zip Code
+      formula: '[D_CUSTOMER/Cust Zip Code]'
+    - id: 3xZ6hH0zRF
+      name: Cust County
+      formula: '[D_CUSTOMER/Cust County]'
+    - id: gTiWBLxHAd
+      name: Cust Region
+      formula: '[D_CUSTOMER/Cust Region]'
+    - id: hZGrmQLEqe
+      name: Cust Since
+      formula: '[D_CUSTOMER/Cust Since]'
+    - id: N5bI-O1QLS
+      name: Cust Type
+      formula: '[D_CUSTOMER/Cust Type]'
+    - id: jKXIOUEQjS
+      name: Cust Gender
+      formula: '[D_CUSTOMER/Cust Gender]'
+    - id: eheLtfPkWo
+      name: Cust Age
+      formula: '[D_CUSTOMER/Cust Age]'
+    - id: mKFQaHZuwF
+      name: Age Group
+      formula: '[D_CUSTOMER/Age Group]'
+    - id: Vu9n27wDCU
+      name: Civil Status
+      formula: '[D_CUSTOMER/Civil Status]'
+    - id: lIv_CAUsZl
+      name: Loyalty Program
+      formula: '[D_CUSTOMER/Loyalty Program]'
+    - id: VEU673DqWE
+      name: Cust Json Field
+      formula: '[D_CUSTOMER/Cust Json Field]'
+    - id: WBsPkss-BO
+      name: Updated At
+      formula: '[D_CUSTOMER/Updated At]'
+    - id: OuMyDhLH02
+      name: Updated By
+      formula: '[D_CUSTOMER/Updated By]'

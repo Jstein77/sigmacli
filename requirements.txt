@@ -1,0 +1,11 @@
+# Python dependencies for code-rep-demo
+
+# YAML parsing
+PyYAML>=6.0.1
+
+# Sigma Computing SDK (sigmoid.playground)
+# This is an internal/private package - install separately with:
+# pip install sigmoid
+# Or if you have a wheel file:
+# pip install /path/to/sigmoid-*.whl
+# sigmoid
