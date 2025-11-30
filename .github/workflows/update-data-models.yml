@@ -39,8 +39,9 @@ jobs:
 
       - name: Create credentials file
         run: |
-          # Create credentials file in the working directory where the script runs
-          cat > basic-credentials.txt << EOF
+          # Find the sigmoid package installation directory and create credentials there
+          SIGMOID_DIR=$(python -c "import sigmoid; from pathlib import Path; print(Path(sigmoid.__file__).parent.parent.parent)")
+          cat > "$SIGMOID_DIR/basic-credentials.txt" << EOF
           default: production
 
           production:
@@ -49,7 +50,7 @@ jobs:
             url: ${{ secrets.SIGMA_URL }}
           EOF
 
-          echo "Created credentials file at $(pwd)/basic-credentials.txt"
+          echo "Created credentials file at $SIGMOID_DIR/basic-credentials.txt"
 
       - name: Run update script
         run: |
