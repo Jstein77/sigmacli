@@ -1,16 +1,173 @@
 dataModelId: cd0158ac-d0cf-4f44-abdf-a51ab12aa695
 name: fan trap data model  - Jordan
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/fan-trap-data-model-Jordan-6eQ2CJ64wUWQKelO3bNHtr
-documentVersion: 13
-latestDocumentVersion: 13
+documentVersion: 18
+latestDocumentVersion: 18
 schemaVersion: 1
 ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-14T01:01:40.545Z'
-updatedAt: '2025-11-25T01:12:05.590Z'
+updatedAt: '2025-12-03T00:43:25.777Z'
 pages:
-- id: Cld6xLey47
+- id: 7ESG5XUv8I
   name: Page 1
-  elements: []
+  elements:
+  - id: ZEQBt6umaf
+    name: events
+    kind: table
+    source:
+      elementId: -7Je-3NrQt
+      kind: table
+    columns:
+    - id: 272ZhtHKCt
+      name: event_id
+      formula: '[events/event_id]'
+    - id: zOFp0dP2vf
+      name: event_name
+      formula: '[events/event_name]'
+    - id: D6a6sDcQrQ
+      name: attendance
+      formula: '[events/attendance]'
+    - id: UoWHXhd62g
+      name: venue
+      formula: '[events/venue]'
+    metrics:
+    - id: rTupWYr2Uw
+      formula: Sum([attendance])
+      name: Sum Attendance
+  - id: nGLMYiW3B2
+    name: orders
+    kind: table
+    source:
+      elementId: 8Uv4uhiXwF
+      kind: table
+    columns:
+    - id: GnjWQ_DEo9
+      name: order_id
+      formula: '[orders/order_id]'
+    - id: 9Z1rN-I3ll
+      name: event_id
+      formula: '[orders/event_id]'
+    - id: h5SGUX9nfb
+      name: amount
+      formula: '[orders/amount]'
+    - id: L7JKFXiLhj
+      name: area
+      formula: '[orders/area]'
+    metrics:
+    - id: 0OIGFdBghc
+      formula: Sum([amount])
+      name: Sum Of Amount
+    relationships:
+    - id: aUm49D--QM
+      targetElementId: ZEQBt6umaf
+      keys:
+      - sourceColumnId: 9Z1rN-I3ll
+        targetColumnId: 272ZhtHKCt
+  - id: FZfoD_2_sb
+    name: order_items
+    kind: table
+    source:
+      elementId: wIYsCgWb9_
+      kind: table
+    columns:
+    - id: EEuG9qZB-M
+      name: order_id
+      formula: '[order_details/order_id]'
+    - id: SlYm-zItLd
+      name: product name
+      formula: '[order_details/product name]'
+    - id: oOHXErE0qT
+      name: item_number
+      formula: '[order_details/item_number]'
+    - id: Z1xCECeB9A
+      name: qty
+      formula: '[order_details/qty]'
+    - id: F1VQmC-vlP
+      name: price
+      formula: '[order_details/price]'
+    metrics:
+    - id: fvIZZQmlhk
+      formula: Count()
+    relationships:
+    - id: 3qiZMjMbQo
+      targetElementId: nGLMYiW3B2
+      keys:
+      - sourceColumnId: EEuG9qZB-M
+        targetColumnId: GnjWQ_DEo9
+  - id: Or4hwqt9yb
+    name: PLUGS
+    kind: table
+    source:
+      dataModelId: de08b74b-3de4-4288-9784-58808f0f02a1
+      elementId: FW7Mho6eRH
+      kind: data-model
+    columns:
+    - id: elCRX8xKN_
+      name: Product Type
+      formula: '[PLUGS/Product Type]'
+    - id: yPro9wP0AY
+      name: Product Family
+      formula: '[PLUGS/Product Family]'
+    - id: dZ1wy0fVXF
+      name: Product Line
+      formula: '[PLUGS/Product Line]'
+    - id: jrxcKnd9Qp
+      name: Product Name
+      formula: '[PLUGS/Product Name]'
+    - id: NaaVCDJtBh
+      name: Brand
+      formula: '[PLUGS/Brand]'
+    - id: aYfn7fj060
+      name: Store Region
+      formula: '[PLUGS/Store Region]'
+    - id: zFSHnolq1P
+      name: Store State
+      formula: '[PLUGS/Store State]'
+    - id: h3OvNozDdO
+      name: Store Name
+      formula: '[PLUGS/Store Name]'
+    - id: glKtDmxmer
+      name: Customer Name
+      formula: '[PLUGS/Customer Name]'
+    - id: O48WCtZKw2
+      name: Date
+      formula: '[PLUGS/Date]'
+    - id: TEDsjXNkWn
+      name: Order Number
+      formula: '[PLUGS/Order Number]'
+    - id: AQtDd9FIPF
+      name: Sku Number
+      formula: '[PLUGS/Sku Number]'
+    - id: OhfxCfLk69
+      name: Quantity
+      formula: '[PLUGS/Quantity]'
+    - id: 8igXG7OFA3
+      name: Cost
+      formula: '[PLUGS/Cost]'
+    - id: fNNCMibv4n
+      name: Price
+      formula: '[PLUGS/Price]'
+    - id: 9v0CP__AFf
+      name: Store Key
+      formula: '[PLUGS/Store Key]'
+    - id: 8gABMrNBNV
+      name: Store City
+      formula: '[PLUGS/Store City]'
+    - id: lPPM2BvB7m
+      name: Store Zip Code
+      formula: '[PLUGS/Store Zip Code]'
+    - id: SILN-cLp0m
+      name: Store Latitude
+      formula: '[PLUGS/Store Latitude]'
+    - id: O_1kefxxEM
+      name: Store Longitude
+      formula: '[PLUGS/Store Longitude]'
+    - id: P0-RMguUML
+      name: Cust Key
+      formula: '[PLUGS/Cust Key]'
+    - id: BwEby5IG0L
+      name: Cust Json
+      formula: '[PLUGS/Cust Json]'

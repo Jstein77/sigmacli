@@ -1,20 +1,20 @@
-dataModelId: 2fa79821-c0b5-4135-b480-068a4c6e7ebd
-name: Base Model
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/Base-Model-1rVegJWviTQ29TZMtGowDb
-documentVersion: 54
-latestDocumentVersion: 54
+dataModelId: ce846e01-9b87-4ed3-bc30-85876af32ef2
+name: Tenant A Model
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Tenant-A-Model-6hGWh06IYMsluZ68S4lS14
+documentVersion: 4
+latestDocumentVersion: 4
 schemaVersion: 1
-ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
-folderId: 43814f5c-f9a6-481c-a835-8a5236efa61e
-createdBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
+ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+folderId: def06fd9-4c64-411b-a095-b04a74e245de
+createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-createdAt: '2025-11-24T17:07:37.064Z'
-updatedAt: '2025-12-02T23:10:14.079Z'
+createdAt: '2025-12-19T23:12:02.438Z'
+updatedAt: '2025-12-20T00:57:21.138Z'
 pages:
-- id: GukG6vtlmf
+- id: 0RX63s8ds6
   name: Page 1
   elements:
-  - id: abcB5jGbMQ
+  - id: hs5Jy7staz
     name: PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
     kind: table
     source:
@@ -25,46 +25,46 @@ pages:
       - PLUGS_ELECTRONICS
       - PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
     columns:
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/ORDER_NUMBER
+    - id: VeGHbIlrtn
       name: Order Number
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/DATE
+    - id: 1bA0Q0RHW3
       name: Date
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/SKU_NUMBER
+    - id: taPv66ZA1-
       name: Sku Number
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Sku Number]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/QUANTITY
+    - id: N2AezCJxSP
       name: Quantity
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Quantity]'
       description: Also known as, amount, volume, or total
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/COST
+    - id: gxf-m3XCdB
       name: Cost
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cost]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRICE
+    - id: IPlLOok0Ww
       name: Price
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Price]'
-    - id: 1Y5eWZDTfj
-      name: Profit
-      formula: ([Price] - [Cost]) * [Quantity]
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_TYPE
+    - id: Pdmb_xsqfj
       name: Product Type
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Type]'
-    - id: 7iTQqzYs0_
-      name: Product Family
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Family]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_NAME
+    - id: ItXxYcIBLJ
       name: Product Name
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Name]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_NAME
+    - id: e4XaFE2zpp
       name: Store Name
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_REGION
+    - id: ferp5KEk0M
       name: Store Region
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_STATE
+    - id: 480kBhMnu9
       name: Store State
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store State]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/CUSTOMER_NAME
+    - id: M_OhZT9BVU
       name: Customer Name
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Customer Name]'
+    - id: NvAK7WH0xi
+      name: First Name
+      formula: SplitPart([Customer Name], " ", 1)
+    - id: TKoB9CCVKB
+      name: Last Name
+      formula: SplitPart([Customer Name], " ", 2)

@@ -1,17 +1,17 @@
 dataModelId: 8c1747f9-5a9b-4f29-a455-6bcc6747bdc7
 name: Chasm Trap Data Model (many:1 and 1:many) (1)
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/Chasm-Trap-Data-Model-many-1-and-1-many-1-4glz2Z5ZExGQXncU5Q5mkv
-documentVersion: 19
-latestDocumentVersion: 19
+documentVersion: 20
+latestDocumentVersion: 20
 schemaVersion: 1
 ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-05T23:41:58.397Z'
-updatedAt: '2025-11-25T01:12:07.661Z'
+updatedAt: '2025-12-03T00:13:56.481Z'
 pages:
-- id: wenZlroKo4
+- id: Z4YPrO4O-6
   name: Page 1
   elements:
   - id: wfcIMrmJxz
@@ -62,6 +62,12 @@ pages:
     - id: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_NAME
       name: Product Name
       formula: '[D_PRODUCT/Product Name]'
+    relationships:
+    - id: 7VEyF-yMRc
+      targetElementId: ABcTufI80a
+      keys:
+      - sourceColumnId: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_KEY
+        targetColumnId: inode-59DfSX7HJo4KCd4dxMysJE/PRODUCT_KEY
   - id: ABcTufI80a
     name: F_INVENTORY
     kind: table
@@ -88,11 +94,6 @@ pages:
       keys:
       - sourceColumnId: inode-59DfSX7HJo4KCd4dxMysJE/DATE_KEY
         targetColumnId: inode-6DnRATxrxKE30P9wZ9p1Na/DATE_KEY
-    - id: NNwGb_FL8i
-      targetElementId: DU60pn2TDs
-      keys:
-      - sourceColumnId: inode-59DfSX7HJo4KCd4dxMysJE/PRODUCT_KEY
-        targetColumnId: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_KEY
   - id: 3FUOfWwz08
     name: D_DATE
     kind: table

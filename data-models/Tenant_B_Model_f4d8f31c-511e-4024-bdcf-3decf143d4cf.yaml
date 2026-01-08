@@ -1,6 +1,6 @@
-dataModelId: 789b19a7-e43c-4e7e-a4f5-2e5119793994
+dataModelId: f4d8f31c-511e-4024-bdcf-3decf143d4cf
 name: Tenant B Model
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/Tenant-B-Model-2GayzY8NQyZ8qHt6odKa8w
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Tenant-B-Model-7s1gZskEin96MwOxJFmctp
 documentVersion: 1
 latestDocumentVersion: 1
 schemaVersion: 1
@@ -8,10 +8,10 @@ ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 folderId: def06fd9-4c64-411b-a095-b04a74e245de
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-createdAt: '2025-11-25T01:12:06.274Z'
-updatedAt: '2025-11-25T01:12:06.274Z'
+createdAt: '2025-12-02T23:10:07.215Z'
+updatedAt: '2025-12-02T23:10:07.215Z'
 pages:
-- id: LKZnLDLM29
+- id: jLc_Hn6V0o
   name: Page 1
   elements:
   - id: abcB5jGbMQ

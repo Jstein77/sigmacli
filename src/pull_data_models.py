@@ -5,36 +5,24 @@ Authenticates to Sigma, finds all data models, and saves YAML specs to data-mode
 """
 
 from pathlib import Path
-from sigmoid.playground import (
-    ensureContext, Context, paginated, geturl, raiseErrIf
-)
-from functools import partial
 import yaml
+from sigma_client import SigmaClient
 
 
-def get_all_data_models(ctx: Context):
+def get_all_data_models(client: SigmaClient, print: bool = False):
     """Fetch all data models from Sigma instance."""
-    url = ctx.origin + '/v2/datamodels'
-    data_models = []
-
-    for dm in paginated(partial(geturl, ctx, url)):
-        data_models.append(dm)
-
-    return data_models
+    return client.get_paginated('/v2/datamodels')
 
 
-def get_data_model_yaml(ctx: Context, data_model_id: str, version: int = None):
+def get_data_model_yaml(client: SigmaClient, data_model_id: str, version: int = None):
     """Fetch YAML spec for a specific data model."""
-    url = ctx.origin + f'/v3alpha/datamodels/{data_model_id}/spec'
+    endpoint = f'/v3alpha/datamodels/{data_model_id}/spec'
 
     params = {}
     if version:
         params['documentVersion'] = version
 
-    result, err = geturl(ctx, url, **params)
-    raiseErrIf(result, err)
-
-    return result
+    return client.get(endpoint, params)
 
 
 def save_data_model_yaml(data_model, yaml_spec, output_dir: Path):
@@ -59,10 +47,10 @@ def save_data_model_yaml(data_model, yaml_spec, output_dir: Path):
 
 def main():
     """Main function to pull all data models and save their YAML specs."""
-    # Initialize context and authenticate
+    # Initialize client and authenticate
     print("Authenticating to Sigma...")
-    ctx = ensureContext(Context())
-    print(f"Authenticated successfully to {ctx.origin}")
+    client = SigmaClient(env='staging')
+    print(f"Authenticated successfully to {client.base_url}")
 
     # Create output directory
     output_dir = Path('data-models')
@@ -71,7 +59,7 @@ def main():
 
     # Get all data models
     print("\nFetching list of data models...")
-    data_models = get_all_data_models(ctx)
+    data_models = get_all_data_models(client)
     print(f"Found {len(data_models)} data models")
 
     # Process each data model
@@ -87,7 +75,7 @@ def main():
 
         try:
             # Get YAML spec
-            yaml_spec = get_data_model_yaml(ctx, dm_id, version)
+            yaml_spec = get_data_model_yaml(client, dm_id, version)
 
             # Save to file
             filepath = save_data_model_yaml(dm, yaml_spec, output_dir)
@@ -110,3 +98,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+    # client = SigmaClient()
+    # data_models = get_all_data_models(client)
+    # print(f"\nFound {len(data_models)} data models:")
+    # print(data_models)

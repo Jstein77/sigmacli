@@ -1,17 +1,17 @@
 dataModelId: 65a8d4e0-089c-4d3f-80e1-b31d5d258f75
 name: Bootcamp Data Model
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/Bootcamp-Data-Model-35PnDy8GIDShAUFbrergdD
-documentVersion: 22
-latestDocumentVersion: 22
+documentVersion: 23
+latestDocumentVersion: 23
 schemaVersion: 1
 ownerId: ikwLCS5iwWlw4IHflxkb7Obkl11Te
 folderId: 7b702d72-5948-4fde-93e4-7cff1f64255a
 createdBy: ikwLCS5iwWlw4IHflxkb7Obkl11Te
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-02-24T19:56:31.917Z'
-updatedAt: '2025-11-24T22:53:05.670Z'
+updatedAt: '2025-12-02T23:10:03.567Z'
 pages:
-- id: 4tbn9pb0c1
+- id: 3NfrmaKmfr
   name: Sales & Inventory Union
   elements: []
 - id: UhUk6Ji26E
