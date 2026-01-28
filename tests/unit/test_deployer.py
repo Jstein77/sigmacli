@@ -33,8 +33,10 @@ class TestDeployPush:
     def test_deploy_pushes_changed_model(self, tmp_path):
         local = _make_model(tables=[{"id": "t1"}])
         client, manager = _setup(tmp_path, local)
-        client.get_data_model_spec.return_value = _make_model(tables=[{"id": "t2"}])
-        client.update_data_model.return_value = {"documentVersion": 2}
+        remote = _make_model(tables=[{"id": "t2"}])
+        refreshed = {**remote, "documentVersion": 2, "updatedAt": "2025-01-01"}
+        client.get_data_model_spec.side_effect = [remote, refreshed]
+        client.update_data_model.return_value = {}
 
         with patch.object(manager, "_auto_commit_and_push"):
             result = manager.deploy()
@@ -66,8 +68,10 @@ class TestDeployPush:
     def test_deploy_force_overrides_version_conflict(self, tmp_path):
         local = _make_model(doc_version=1, tables=[{"id": "t1"}])
         client, manager = _setup(tmp_path, local)
-        client.get_data_model_spec.return_value = _make_model(doc_version=5, tables=[{"id": "t2"}])
-        client.update_data_model.return_value = {"documentVersion": 6}
+        remote = _make_model(doc_version=5, tables=[{"id": "t2"}])
+        refreshed = {**remote, "documentVersion": 6}
+        client.get_data_model_spec.side_effect = [remote, refreshed]
+        client.update_data_model.return_value = {}
 
         with patch.object(manager, "_auto_commit_and_push"):
             result = manager.deploy(force=True)
@@ -140,8 +144,10 @@ class TestAutoCommitAndPush:
     def test_deploy_auto_commits_after_push(self, mock_run, tmp_path):
         local = _make_model(tables=[{"id": "t1"}])
         client, manager = _setup(tmp_path, local)
-        client.get_data_model_spec.return_value = _make_model(tables=[{"id": "t2"}])
-        client.update_data_model.return_value = {"documentVersion": 2}
+        remote = _make_model(tables=[{"id": "t2"}])
+        refreshed = {**remote, "documentVersion": 2}
+        client.get_data_model_spec.side_effect = [remote, refreshed]
+        client.update_data_model.return_value = {}
 
         manager.deploy()
 

@@ -79,6 +79,9 @@ class DeployManager:
                 payload = _content_fields(local_data)
                 payload.pop("dataModelId", None)
                 response = self.client.update_data_model(model_id, payload)
+                # Re-fetch spec to get updated version metadata
+                refreshed = self.client.get_data_model_spec(model_id)
+                response.update(refreshed)
                 logger.info("Pushed model %s", name)
                 results["pushed"].append({"name": name})
                 self._update_local_version(model_id, local_data, response)
