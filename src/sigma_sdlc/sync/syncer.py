@@ -64,7 +64,14 @@ class SyncManager:
 
         try:
             self._apply_changes(changes)
-            self._commit(repo, changes)
+            committed = self._commit(repo, changes)
+
+            if not committed:
+                # No actual git changes (files identical to main)
+                repo.git.checkout("main")
+                repo.git.branch("-D", branch_name)
+                changes["summary"] = generate_diff_summary(changes)
+                return changes
 
             if create_pr:
                 repo.git.push("--set-upstream", "origin", branch_name)
@@ -114,11 +121,13 @@ class SyncManager:
             if path:
                 path.unlink()
 
-    def _commit(self, repo: Repo, changes: dict) -> None:
+    def _commit(self, repo: Repo, changes: dict) -> bool:
         repo.git.add("data-models/")
         if repo.is_dirty(index=True):
             summary = generate_diff_summary(changes)
             repo.git.commit("-m", f"Sigma sync: {summary}")
+            return True
+        return False
 
     def _create_pr(self, branch_name: str, changes: dict) -> str | None:
         summary = generate_diff_summary(changes)
