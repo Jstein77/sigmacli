@@ -1,76 +1,11 @@
 dataModelId: be0e1607-8ba8-4d06-9dae-5413d66d535c
-name: Tenant Model C
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/Tenant-Model-C-5MCYJ5ubSTixJxx3lCkNC4
-documentVersion: 7
-latestDocumentVersion: 7
-schemaVersion: 1
-ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
-folderId: def06fd9-4c64-411b-a095-b04a74e245de
+dataModelUrlId: 5MCYJ5ubSTixJxx3lCkNC4
 createdBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
 updatedBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
 createdAt: '2025-11-26T19:31:26.381Z'
-updatedAt: '2025-12-01T17:19:53.186Z'
-pages:
-- id: jky_izjQFT
-  name: Page 1
-  elements:
-  - id: abcB5jGbMQ
-    name: PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
-    kind: table
-    source:
-      connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
-      kind: warehouse-table
-      path:
-      - RETAIL
-      - PLUGS_ELECTRONICS
-      - PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
-    columns:
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/ORDER_NUMBER
-      name: Order Number
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/DATE
-      name: Day of Date
-      formula: DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/SKU_NUMBER
-      name: Sku Number
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Sku Number]'
-    - id: 7fW5XEQ0-k
-      name: Sku Code
-      formula: Left([Sku Number], 2)
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/QUANTITY
-      name: Quantity
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Quantity]'
-      description: Also known as, amount, volume, or total
-    - id: Gp14iaPksI
-      name: Double Quantity
-      formula: '[Quantity] * 2'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/COST
-      name: Cost
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cost]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRICE
-      name: Price
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Price]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_TYPE
-      name: Product Type
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Type]'
-    - id: 7iTQqzYs0_
-      name: Product Family
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Family]'
-    - id: eXv4vxVjLL
-      name: Product Line
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Line]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_NAME
-      name: Product Name
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Name]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_NAME
-      name: Store Name
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_REGION
-      name: Store Region
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_STATE
-      name: Store State
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store State]'
-    - id: inode-3kb5TXjW54u4nZqm5VsHhj/CUSTOMER_NAME
-      name: Customer Name
-      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Customer Name]'
+updatedAt: '2026-01-28T01:49:35.344Z'
+name: Tenant Model C
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/5MCYJ5ubSTixJxx3lCkNC4
+path: 1. Models/Client Models
+latestVersion: 8
+ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
