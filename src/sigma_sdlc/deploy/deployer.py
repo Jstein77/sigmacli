@@ -1,21 +1,31 @@
 import logging
+import re
 import subprocess
 from pathlib import Path
 
 from sigma_sdlc.client.sigma_client import SigmaAPIError, SigmaClient
-from sigma_sdlc.sync.file_utils import find_model_file, load_yaml_file, write_yaml_file
+from sigma_sdlc.sync.file_utils import (
+    find_model_file,
+    get_model_filename,
+    load_yaml_file,
+    write_yaml_file,
+)
 
 logger = logging.getLogger(__name__)
 
 METADATA_KEYS = {
+    "dataModelId",
     "documentVersion",
     "latestDocumentVersion",
+    "schemaVersion",
     "updatedAt",
     "createdAt",
     "ownerId",
     "createdBy",
     "updatedBy",
     "url",
+    "folderId",
+    "success",
 }
 
 
@@ -25,6 +35,13 @@ def _content_fields(model: dict) -> dict:
 
 def has_content_changes(local: dict, remote: dict) -> bool:
     return _content_fields(local) != _content_fields(remote)
+
+
+_UUID_RE = re.compile(r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$", re.IGNORECASE)
+
+
+def _is_new_model(model_id: str) -> bool:
+    return not _UUID_RE.match(model_id)
 
 
 class DeployManager:
@@ -43,56 +60,112 @@ class DeployManager:
 
         for model_id, local_data in local_models.items():
             name = local_data.get("name", model_id)
-            try:
-                remote_spec = self.client.get_data_model_spec(model_id)
-            except SigmaAPIError as e:
-                if e.status_code == 404:
-                    logger.warning("Model %s not found in Sigma, skipping", name)
-                    results["skipped"].append({"name": name, "reason": "not found in Sigma"})
-                    continue
-                raise
 
-            if not has_content_changes(local_data, remote_spec):
-                logger.debug("Model %s is unchanged", name)
-                results["unchanged"].append({"name": name})
-                continue
-
-            remote_version = remote_spec.get("documentVersion", 0)
-            local_version = local_data.get("documentVersion", 0)
-            if remote_version > local_version and not force:
-                logger.warning(
-                    "Model %s: remote version %d > local %d, skipping (use --force to override)",
-                    name, remote_version, local_version,
-                )
-                results["skipped"].append({
-                    "name": name,
-                    "reason": f"remote version {remote_version} > local {local_version}",
-                })
-                continue
-
-            if dry_run:
-                logger.info("Would push model %s", name)
-                results["pushed"].append({"name": name})
-                continue
-
-            try:
-                payload = _content_fields(local_data)
-                payload.pop("dataModelId", None)
-                response = self.client.update_data_model(model_id, payload)
-                # Re-fetch spec to get updated version metadata
-                refreshed = self.client.get_data_model_spec(model_id)
-                response.update(refreshed)
-                logger.info("Pushed model %s", name)
-                results["pushed"].append({"name": name})
-                self._update_local_version(model_id, local_data, response)
-            except SigmaAPIError as e:
-                logger.error("Failed to push model %s: %s", name, e)
-                results["failed"].append({"name": name, "error": str(e)})
+            if _is_new_model(model_id):
+                self._deploy_new_model(name, model_id, local_data, results, dry_run)
+            else:
+                self._deploy_existing_model(name, model_id, local_data, results, dry_run, force)
 
         if results["pushed"] and not dry_run:
             self._auto_commit_and_push()
 
         return results
+
+    def _deploy_new_model(self, name, model_id, local_data, results, dry_run):
+        if dry_run:
+            logger.info("Would create new model %s", name)
+            results["pushed"].append({"name": name})
+            return
+
+        try:
+            payload = _content_fields(local_data)
+            payload.pop("dataModelId", None)
+            response = self.client.create_data_model(payload)
+            new_id = response.get("dataModelId")
+            if not new_id:
+                logger.error("Create response for %s missing dataModelId", name)
+                results["failed"].append({"name": name, "error": "no dataModelId in response"})
+                return
+
+            logger.info("Created model %s with id %s", name, new_id)
+
+            # Re-fetch full spec to get complete metadata (e.g. latestDocumentVersion)
+            refreshed = self.client.get_data_model_spec(new_id)
+            response.update(refreshed)
+
+            # Update local data with real ID and all metadata from response
+            local_data["dataModelId"] = new_id
+            for key, value in response.items():
+                if key != "pages":
+                    local_data[key] = value
+
+            new_filename = get_model_filename(local_data)
+            new_path = self.data_models_dir / new_filename
+            write_yaml_file(new_path, local_data)
+
+            # Remove old file
+            old_path = find_model_file(self.data_models_dir, model_id)
+            if old_path and old_path != new_path:
+                old_path.unlink()
+            elif not old_path:
+                # Find by scanning all files for the old model_id value
+                for p in self.data_models_dir.glob("*.yaml"):
+                    d = load_yaml_file(p)
+                    if d.get("dataModelId") == model_id and p != new_path:
+                        p.unlink()
+                        break
+
+            results["pushed"].append({"name": name})
+        except SigmaAPIError as e:
+            logger.error("Failed to create model %s: %s", name, e)
+            results["failed"].append({"name": name, "error": str(e)})
+
+    def _deploy_existing_model(self, name, model_id, local_data, results, dry_run, force):
+        try:
+            remote_spec = self.client.get_data_model_spec(model_id)
+        except SigmaAPIError as e:
+            if e.status_code == 404:
+                logger.warning("Model %s not found in Sigma, skipping", name)
+                results["skipped"].append({"name": name, "reason": "not found in Sigma"})
+                return
+            raise
+
+        if not has_content_changes(local_data, remote_spec):
+            logger.debug("Model %s is unchanged", name)
+            results["unchanged"].append({"name": name})
+            return
+
+        remote_version = remote_spec.get("documentVersion", 0)
+        local_version = local_data.get("documentVersion", 0)
+        if remote_version > local_version and not force:
+            logger.warning(
+                "Model %s: remote version %d > local %d, skipping (use --force to override)",
+                name, remote_version, local_version,
+            )
+            results["skipped"].append({
+                "name": name,
+                "reason": f"remote version {remote_version} > local {local_version}",
+            })
+            return
+
+        if dry_run:
+            logger.info("Would push model %s", name)
+            results["pushed"].append({"name": name})
+            return
+
+        try:
+            payload = _content_fields(local_data)
+            payload.pop("dataModelId", None)
+            response = self.client.update_data_model(model_id, payload)
+            # Re-fetch spec to get updated version metadata
+            refreshed = self.client.get_data_model_spec(model_id)
+            response.update(refreshed)
+            logger.info("Pushed model %s", name)
+            results["pushed"].append({"name": name})
+            self._update_local_version(model_id, local_data, response)
+        except SigmaAPIError as e:
+            logger.error("Failed to push model %s: %s", name, e)
+            results["failed"].append({"name": name, "error": str(e)})
 
     def _load_local_models(self) -> dict:
         index = {}
