@@ -26,7 +26,6 @@ pages:
     columns:
     - id: inode-3kb5TXjW54u4nZqm5VsHhj/ORDER_NUMBER
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]'
-      name: deploy test
     - id: inode-3kb5TXjW54u4nZqm5VsHhj/DATE
       formula: DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
     - id: inode-3kb5TXjW54u4nZqm5VsHhj/SKU_NUMBER
