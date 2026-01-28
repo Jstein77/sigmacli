@@ -83,8 +83,8 @@ class SyncManager:
 
         models = []
         for entry in model_list:
-            full = self.client.get_data_model(entry["dataModelId"])
-            models.append(full)
+            spec = self.client.get_data_model_spec(entry["dataModelId"])
+            models.append(spec)
         return models
 
     def _index_local_models(self) -> dict:

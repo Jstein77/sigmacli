@@ -1,11 +1,16 @@
 dataModelId: 61c3cb4e-bf1c-4080-a4a0-41ec5ef9ed70
-dataModelUrlId: 2YtJv7MFitk88tnEtNUjcc
+name: My Data Model
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/My-Data-Model-2YtJv7MFitk88tnEtNUjcc
+documentVersion: 1
+latestDocumentVersion: 1
+schemaVersion: 1
+ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-04-02T21:56:52.493Z'
 updatedAt: '2025-04-02T21:56:52.493Z'
-name: My Data Model
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/2YtJv7MFitk88tnEtNUjcc
-path: My Documents
-latestVersion: 1
-ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+pages:
+- id: z-PjjDTqTb
+  name: Page 1
+  elements: []
