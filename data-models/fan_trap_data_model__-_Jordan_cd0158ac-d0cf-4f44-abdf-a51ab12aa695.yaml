@@ -60,6 +60,15 @@ pages:
     - id: 0OIGFdBghc
       formula: Sum([amount])
       name: Sum Of Amount
+    - id: oC1kOrder01
+      formula: Count([order_id])
+      name: Order Count
+    - id: oC1kOrder02
+      formula: Avg([amount])
+      name: Average Orders
+    - id: oC1kOrder03
+      formula: CountIf(DateDiff("day", [Date], Today()) <= 7)
+      name: Trailing 7 Days Orders
     relationships:
     - id: aUm49D--QM
       targetElementId: ZEQBt6umaf
