@@ -101,14 +101,14 @@ class SigmaClient:
     def get_workspaces(self) -> list:
         return self._paginate("/v2/workspaces")
 
-    def get_data_models(self, workspace_id: str) -> list:
-        return self._paginate(f"/v2/workspaces/{workspace_id}/data-models")
+    def get_data_models(self) -> list:
+        return self._paginate("/v2/dataModels")
 
     def get_data_model(self, model_id: str) -> dict:
-        return self._request("GET", f"/v2/data-models/{model_id}")
+        return self._request("GET", f"/v2/dataModels/{model_id}")
 
     def create_data_model(self, config: dict) -> dict:
-        return self._request("POST", "/v2/data-models", json=config)
+        return self._request("POST", "/v2/dataModels", json=config)
 
     def update_data_model(self, model_id: str, config: dict) -> dict:
-        return self._request("PUT", f"/v2/data-models/{model_id}", json=config)
+        return self._request("PUT", f"/v2/dataModels/{model_id}", json=config)

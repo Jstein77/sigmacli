@@ -25,7 +25,7 @@ class SyncManager:
 
     def sync(self, workspace_id: str | None = None, create_pr: bool = True, dry_run: bool = False) -> dict:
         # Fetch remote models
-        remote_models = self._fetch_remote_models(workspace_id)
+        remote_models = self._fetch_remote_models()
 
         # Index local models by ID
         local_index = self._index_local_models()
@@ -73,19 +73,13 @@ class SyncManager:
         changes["branch"] = branch_name
         return changes
 
-    def _fetch_remote_models(self, workspace_id: str | None) -> list:
-        if workspace_id:
-            workspace_ids = [workspace_id]
-        else:
-            workspaces = self.client.get_workspaces()
-            workspace_ids = [w["workspaceId"] for w in workspaces]
+    def _fetch_remote_models(self) -> list:
+        model_list = self.client.get_data_models()
 
         models = []
-        for wid in workspace_ids:
-            model_list = self.client.get_data_models(wid)
-            for entry in model_list:
-                full = self.client.get_data_model(entry["dataModelId"])
-                models.append(full)
+        for entry in model_list:
+            full = self.client.get_data_model(entry["dataModelId"])
+            models.append(full)
         return models
 
     def _index_local_models(self) -> dict:
