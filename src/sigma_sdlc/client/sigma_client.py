@@ -107,6 +107,9 @@ class SigmaClient:
     def get_data_model(self, model_id: str) -> dict:
         return self._request("GET", f"/v2/dataModels/{model_id}")
 
+    def get_data_model_spec(self, model_id: str) -> dict:
+        return self._request("GET", f"/v2/dataModels/{model_id}/spec")
+
     def create_data_model(self, config: dict) -> dict:
         return self._request("POST", "/v2/dataModels", json=config)
 

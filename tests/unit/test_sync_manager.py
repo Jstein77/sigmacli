@@ -26,6 +26,7 @@ class TestSyncManagerDryRun:
         client.get_workspaces.return_value = [{"workspaceId": "ws1"}]
         client.get_data_models.return_value = [{"dataModelId": "m1"}]
         client.get_data_model.return_value = _make_model("m1")
+        client.get_data_model_spec.return_value = {"tables": []}
 
         manager = SyncManager(client, tmp_path)
         result = manager.sync(dry_run=True)
@@ -46,6 +47,7 @@ class TestSyncManagerDryRun:
         client.get_workspaces.return_value = [{"workspaceId": "ws1"}]
         client.get_data_models.return_value = [{"dataModelId": "m1"}]
         client.get_data_model.return_value = remote
+        client.get_data_model_spec.return_value = {"tables": []}
 
         manager = SyncManager(client, tmp_path)
         result = manager.sync(dry_run=True)
@@ -79,6 +81,7 @@ class TestSyncManagerDryRun:
         client.get_workspaces.return_value = [{"workspaceId": "ws1"}]
         client.get_data_models.return_value = [{"dataModelId": "m1"}]
         client.get_data_model.return_value = _make_model("m1", doc_version=5, schema_version=2)
+        client.get_data_model_spec.return_value = {"tables": []}
 
         manager = SyncManager(client, tmp_path)
         result = manager.sync(dry_run=True)
@@ -92,6 +95,7 @@ class TestSyncManagerDryRun:
         client = MagicMock()
         client.get_data_models.return_value = [{"dataModelId": "m1"}]
         client.get_data_model.return_value = _make_model("m1")
+        client.get_data_model_spec.return_value = {"tables": []}
 
         manager = SyncManager(client, tmp_path)
         result = manager.sync(dry_run=True)
@@ -103,6 +107,7 @@ class TestSyncManagerDryRun:
         client.get_workspaces.return_value = [{"workspaceId": "ws1"}]
         client.get_data_models.return_value = [{"dataModelId": "m1"}]
         client.get_data_model.return_value = _make_model("m1")
+        client.get_data_model_spec.return_value = {"tables": []}
 
         manager = SyncManager(client, tmp_path)
         manager.sync(dry_run=True)
