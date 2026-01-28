@@ -5,7 +5,7 @@ from unittest.mock import patch
 import pytest
 import yaml
 
-from sigma_sdlc.config.credentials import SigmaCredentials, load_credentials
+from sigma_sdlc.config.credentials import SigmaCredentials, _find_project_root, load_credentials
 
 
 @pytest.fixture
@@ -126,3 +126,42 @@ class TestValidationErrors:
              patch("sigma_sdlc.config.credentials.Path.home", return_value=tmp_path / "fakehome"):
             with pytest.raises(ValueError, match="missing required fields"):
                 load_credentials()
+
+
+class TestFindProjectRoot:
+    def test_finds_sigma_in_parent(self, tmp_path, creds_yaml):
+        """When cwd is a subdirectory, find .sigma in an ancestor."""
+        creds_file = tmp_path / ".sigma" / "credentials.yml"
+        creds_file.parent.mkdir()
+        creds_file.write_text(yaml.dump(creds_yaml))
+
+        subdir = tmp_path / "a" / "b" / "c"
+        subdir.mkdir(parents=True)
+
+        with patch("sigma_sdlc.config.credentials.Path.cwd", return_value=subdir):
+            root = _find_project_root()
+        assert root == tmp_path
+
+    def test_returns_none_when_no_sigma(self, tmp_path):
+        """When no .sigma/credentials.yml exists anywhere, return None."""
+        subdir = tmp_path / "empty"
+        subdir.mkdir()
+
+        with patch("sigma_sdlc.config.credentials.Path.cwd", return_value=subdir):
+            root = _find_project_root()
+        assert root is None
+
+    def test_loads_creds_from_parent_dir(self, tmp_path, creds_yaml):
+        """Integration: load_credentials finds creds from a subdirectory."""
+        creds_file = tmp_path / ".sigma" / "credentials.yml"
+        creds_file.parent.mkdir()
+        creds_file.write_text(yaml.dump(creds_yaml))
+
+        subdir = tmp_path / "src" / "deep"
+        subdir.mkdir(parents=True)
+
+        with patch.dict(os.environ, {}, clear=True), \
+             patch("sigma_sdlc.config.credentials.Path.cwd", return_value=subdir), \
+             patch("sigma_sdlc.config.credentials.Path.home", return_value=tmp_path / "fakehome"):
+            creds = load_credentials()
+        assert creds.client_id == "test-id"

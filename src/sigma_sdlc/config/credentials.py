@@ -12,6 +12,18 @@ class SigmaCredentials:
     client_secret: str
 
 
+def _find_project_root() -> Path | None:
+    """Walk up from cwd looking for a directory containing .sigma/credentials.yml."""
+    current = Path.cwd()
+    while True:
+        if (current / ".sigma" / "credentials.yml").is_file():
+            return current
+        parent = current.parent
+        if parent == current:
+            return None
+        current = parent
+
+
 def load_credentials(profile: str = "default") -> SigmaCredentials:
     """Load credentials in priority order: env vars, project file, home dir."""
     # 1. Environment variables
@@ -26,11 +38,12 @@ def load_credentials(profile: str = "default") -> SigmaCredentials:
             base_url=base_url, client_id=client_id, client_secret=client_secret
         )
 
-    # 2. Project-level .sigma/credentials.yml
-    project_creds = Path.cwd() / ".sigma" / "credentials.yml"
-    result = _load_from_file(project_creds, profile)
-    if result:
-        return result
+    # 2. Project-level .sigma/credentials.yml (search upward from cwd)
+    project_root = _find_project_root()
+    if project_root:
+        result = _load_from_file(project_root / ".sigma" / "credentials.yml", profile)
+        if result:
+            return result
 
     # 3. Home directory ~/.sigma/credentials.yml
     home_creds = Path.home() / ".sigma" / "credentials.yml"
