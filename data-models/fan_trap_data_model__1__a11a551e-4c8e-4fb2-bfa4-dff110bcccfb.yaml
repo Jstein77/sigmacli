@@ -1,61 +1,11 @@
 dataModelId: a11a551e-4c8e-4fb2-bfa4-dff110bcccfb
-name: fan trap data model (1)
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/fan-trap-data-model-1-4TZNvVqrHkGcWFEsTdnw9l
-documentVersion: 5
-latestDocumentVersion: 5
-schemaVersion: 1
-ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
+dataModelUrlId: 4TZNvVqrHkGcWFEsTdnw9l
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-03T22:04:13.476Z'
 updatedAt: '2025-11-03T22:06:37.967Z'
-pages:
-- id: 7ESG5XUv8I
-  name: Page 1
-  elements:
-  - id: WNzfcOBp19
-    name: 'events '
-    kind: table
-    source:
-      elementId: -7Je-3NrQt
-      kind: table
-    columns:
-    - id: CSba3GEPV1
-      name: event_id
-      formula: '[events input/event_id]'
-    - id: ju5XBTEGF9
-      name: event_name
-      formula: '[events input/event_name]'
-    - id: Io4XgHUwja
-      name: attendance
-      formula: '[events input/attendance]'
-    - id: IQwkuQmSL7
-      name: venue
-      formula: '[events input/venue]'
-    metrics:
-    - id: U2y_4iZy01
-      formula: Sum([attendance])
-  - id: Ni92s4HqNX
-    name: order_header
-    kind: table
-    source:
-      elementId: 8Uv4uhiXwF
-      kind: table
-    columns:
-    - id: U3flltxJcU
-      name: order_id
-      formula: '[order_header input/order_id]'
-    - id: 6vt9tH5yQq
-      name: event_id
-      formula: '[order_header input/event_id]'
-    - id: LTduZvUc2-
-      name: amount
-      formula: '[order_header input/amount]'
-    - id: 72TZMIBm_1
-      name: area
-      formula: '[order_header input/area]'
-    metrics:
-    - id: 4EIA92rkpq
-      formula: '[amount]'
-      name: Sum of Amount
+name: fan trap data model (1)
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/4TZNvVqrHkGcWFEsTdnw9l
+path: My Documents
+latestVersion: 5
+ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
