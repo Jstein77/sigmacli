@@ -1,15 +1,15 @@
 dataModelId: 2fa79821-c0b5-4135-b480-068a4c6e7ebd
 name: Base Model
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/Base-Model-1rVegJWviTQ29TZMtGowDb
-documentVersion: 59
-latestDocumentVersion: 59
+documentVersion: 60
+latestDocumentVersion: 60
 schemaVersion: 1
 ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
 folderId: 43814f5c-f9a6-481c-a835-8a5236efa61e
 createdBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-24T17:07:37.064Z'
-updatedAt: '2026-01-28T22:35:03.310Z'
+updatedAt: '2026-01-28T22:46:54.239Z'
 pages:
 - id: Ao7xgInQXp
   name: Facts
@@ -26,6 +26,7 @@ pages:
     columns:
     - id: inode-3kb5TXjW54u4nZqm5VsHhj/ORDER_NUMBER
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]'
+      name: Order Number
     - id: inode-3kb5TXjW54u4nZqm5VsHhj/DATE
       formula: DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
     - id: inode-3kb5TXjW54u4nZqm5VsHhj/SKU_NUMBER
