@@ -9,3 +9,215 @@ url: https://staging.sigmacomputing.io/papercranestaging/data-model/6E6ParDFw20a
 path: My Documents
 latestVersion: 30
 ownerId: u7hiV1yKfDQqhJuVYioq7S1EXmixI
+spec:
+  dataModelId: da65bef4-8da2-40d6-a1b0-f4f1224f7ce1
+  name: 'Endeavour: Sales Data'
+  url: https://staging.sigmacomputing.io/papercranestaging/data-model/Endeavour-Sales-Data-6E6ParDFw20aKyaYjGpwVr
+  documentVersion: 30
+  latestDocumentVersion: 30
+  schemaVersion: 1
+  ownerId: u7hiV1yKfDQqhJuVYioq7S1EXmixI
+  folderId: a7044b6f-0f95-4cef-ac4f-2552a7f894eb
+  createdBy: u7hiV1yKfDQqhJuVYioq7S1EXmixI
+  updatedBy: u7hiV1yKfDQqhJuVYioq7S1EXmixI
+  createdAt: '2025-12-09T18:42:08.515Z'
+  updatedAt: '2025-12-19T16:44:41.033Z'
+  description: This data model contains information about articles sold by state and
+    site
+  pages:
+  - id: G3OL4gQgOJ
+    name: Snowflake
+    elements:
+    - kind: control
+      controlId: Today-Proxy
+      id: 6wntmAyMQK
+      controlType: date
+      mode: '='
+      value: '2025-11-23T00:00:00Z'
+      includeNulls: when-no-value-is-selected
+    - id: TDy9ALcrG4
+      kind: table
+      source:
+        kind: join
+        joins:
+        - left:
+            elementId: LPAccybKK6
+            kind: table
+          right:
+            elementId: JeU_6z07Jb
+            kind: table
+          columns:
+          - left: DateTrunc("day", [order_date_time])
+            right: DateTrunc("day", [calendar_date])
+          joinType: left-outer
+        - left:
+            elementId: LPAccybKK6
+            kind: table
+          right:
+            elementId: juXFD8g2Vp
+            kind: table
+          columns:
+          - left: Text(Round([sales_organisation]))
+            right: '[sales_organisation]'
+          - left: Text(Round([site_number]))
+            right: '[site_number]'
+          joinType: left-outer
+      columns:
+      - id: ajJL4-mBwd
+        formula: '[fct_orders.csv/hashed_order_id]'
+        name: Order ID
+      - id: LB1PchkC-8
+        formula: '[fct_orders.csv/order_date_time]'
+        name: Order Date Time
+      - id: GgEjhIi_1G
+        formula: If([fct_orders.csv/category_description] = "SPIRITS RTD", "Spirits
+          RTD", Proper([fct_orders.csv/category_description]))
+        name: Category
+      - id: _-QEYDXjgy
+        formula: Proper([fct_orders.csv/sub_category_description])
+        name: Sub Category
+      - id: mW7wx7UaGw
+        formula: '[fct_orders.csv/article]'
+        name: Article ID
+      - id: j6CJ9kKmCM
+        formula: RegexpReplace(Trim([fct_orders.csv/article_description]), " +", "
+          ")
+        name: Article Description
+        description: This is the field that lists the product
+      - id: y9xN5q9vJl
+        formula: '[fct_orders.csv/sales_excl_tax_total]'
+        name: Total Sales Excl Tax
+      - id: 3Bl_tkVBIv
+        formula: Text(Round([fct_orders.csv/sales_organisation]))
+        name: Organisation ID
+      - id: eLdiZlGRr5
+        formula: '[fct_orders.csv/sales_organisation_description]'
+        name: Organisation
+        description: This field is the organisation
+      - id: Y5I4N4aupC
+        formula: Text(Round([fct_orders.csv/hashed_amperity_id]))
+        name: Customer ID
+      - id: bodM9boEjp
+        formula: '[fct_orders.csv/sales_channel]'
+        name: Sales Channel
+      - id: YXKHGhqkTJ
+        formula: Text(Round([fct_orders.csv/site_number]))
+        name: Site Number
+      - id: bisL4NpAdv
+        formula: DateTrunc("day", [dim_calendar.xlsx - calendar.csv/calendar_date])
+      - id: r95t--QJgO
+        formula: '[dim_calendar.xlsx - calendar.csv/calendar_date_key]'
+      - id: eW0FJAE1Sz
+        formula: GrandTotal(Max(If([Today-Proxy] = [Day of calendar_date], [day_of_fiscal_year])))
+        name: Current Fiscal Day
+      - id: hLJwKaT5dV
+        formula: GrandTotal(Max(If([Today-Proxy] = [Day of calendar_date], [fiscal_week_number])))
+        name: Current Fiscal Week
+      - id: qUo36Ak_r9
+        formula: GrandTotal(Max(If([Today-Proxy] = [Day of calendar_date], [fiscal_year])))
+        name: Current FY
+      - id: bxUNTQWBbp
+        formula: '[dim_calendar.xlsx - calendar.csv/fiscal_week_number]'
+      - id: sgZZa5ZWZB
+        formula: '[dim_calendar.xlsx - calendar.csv/public_holiday_NSW]'
+      - id: VaqV3YdFDu
+        formula: '[dim_calendar.xlsx - calendar.csv/public_holiday_VIC]'
+      - id: SRjUhJhScz
+        formula: '[DIM_SITE/sales_organisation]'
+      - id: Qe1tpdy0py
+        formula: '[DIM_SITE/site_number]'
+      - id: sSppHijMmi
+        formula: '[DIM_SITE/sales_organisation_description]'
+      - id: ThkmOzapJc
+        formula: '[DIM_SITE/state]'
+      - id: M221-nAvlW
+        formula: '[dim_calendar.xlsx - calendar.csv/fiscal_year]'
+      - id: mmLydiTkX0
+        formula: '[dim_calendar.xlsx - calendar.csv/fiscal_year_week_string]'
+      - id: qGo8DH-pIw
+        formula: '[dim_calendar.xlsx - calendar.csv/day_of_fiscal_year]'
+      name: ORDERS
+      description: Article Sales
+      metrics:
+      - id: DMjz2j6iQa
+        formula: SumIf([Total Sales Excl Tax], [fiscal_year] = [Current FY] and [day_of_fiscal_year]
+          < [Current Fiscal Day])
+        name: YTD Sales
+        description: Sales for this fiscal year to date
+      - id: _F1z2MSoz8
+        formula: SumIf([Total Sales Excl Tax], [fiscal_year] = [Current FY] - 1 and
+          [day_of_fiscal_year] < [Current Fiscal Day])
+        name: PYTD Sales
+        description: Last fiscal YTD sales
+      - id: 0NcKADguH1
+        formula: SumIf([Total Sales Excl Tax], [fiscal_year] = [Current FY] and [fiscal_week_number]
+          = [Current Fiscal Week] - 1)
+        name: PW Sales
+        description: Sales for the prior week of the current FY
+      - id: 9dx4OyVGGM
+        formula: SumIf([Total Sales Excl Tax], [fiscal_year] = [Current FY] - 1 and
+          [fiscal_week_number] = [Current Fiscal Week] - 1)
+        name: PWPY Sales
+        description: Sales for the prior week of the prior FY
+      - id: _KHYE5-D0V
+        formula: CountDistinct([Customer ID])
+        name: Customer Count
+      - id: R9Gfi0DGXp
+        formula: ([Metrics/PYTD Sales] - [Metrics/YTD Sales]) / [Metrics/PYTD Sales]
+        name: YTD vs PYTD sales % change
+        description: Fiscal YTD vs prior fiscal YTD % change
+      - id: Rl7C5SVTq9
+        formula: CountDistinct([Order ID])
+        name: Order count
+      filters:
+      - id: FS_Bg8AW7m
+        columnId: j6CJ9kKmCM
+        kind: list
+        mode: exclude
+        values:
+        - null
+      - id: M1qAJVsfMl
+        columnId: _-QEYDXjgy
+        kind: list
+        mode: exclude
+        values:
+        - null
+      - id: uQYJHYAdLg
+        columnId: YXKHGhqkTJ
+        kind: list
+        mode: exclude
+        values:
+        - null
+      folders:
+      - id: MjVSvVfNP9
+        name: Date Dimensions
+        items:
+        - bisL4NpAdv
+        - r95t--QJgO
+        - eW0FJAE1Sz
+        - hLJwKaT5dV
+        - qUo36Ak_r9
+        - bxUNTQWBbp
+        - sgZZa5ZWZB
+        - VaqV3YdFDu
+      order:
+      - ajJL4-mBwd
+      - LB1PchkC-8
+      - GgEjhIi_1G
+      - _-QEYDXjgy
+      - mW7wx7UaGw
+      - j6CJ9kKmCM
+      - y9xN5q9vJl
+      - 3Bl_tkVBIv
+      - eLdiZlGRr5
+      - Y5I4N4aupC
+      - bodM9boEjp
+      - YXKHGhqkTJ
+      - MjVSvVfNP9
+      - SRjUhJhScz
+      - Qe1tpdy0py
+      - sSppHijMmi
+      - ThkmOzapJc
+      - M221-nAvlW
+      - mmLydiTkX0
+      - qGo8DH-pIw

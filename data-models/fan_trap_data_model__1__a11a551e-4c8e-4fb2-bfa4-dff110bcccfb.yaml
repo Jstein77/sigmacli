@@ -9,3 +9,67 @@ url: https://staging.sigmacomputing.io/papercranestaging/data-model/4TZNvVqrHkGc
 path: My Documents
 latestVersion: 5
 ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+spec:
+  dataModelId: a11a551e-4c8e-4fb2-bfa4-dff110bcccfb
+  name: fan trap data model (1)
+  url: https://staging.sigmacomputing.io/papercranestaging/data-model/fan-trap-data-model-1-4TZNvVqrHkGcWFEsTdnw9l
+  documentVersion: 5
+  latestDocumentVersion: 5
+  schemaVersion: 1
+  ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+  folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
+  createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+  updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+  createdAt: '2025-11-03T22:04:13.476Z'
+  updatedAt: '2025-11-03T22:06:37.967Z'
+  pages:
+  - id: 7ESG5XUv8I
+    name: Page 1
+    elements:
+    - id: WNzfcOBp19
+      kind: table
+      source:
+        elementId: -7Je-3NrQt
+        kind: table
+      columns:
+      - id: CSba3GEPV1
+        formula: '[events input/event_id]'
+      - id: ju5XBTEGF9
+        formula: '[events input/event_name]'
+      - id: Io4XgHUwja
+        formula: '[events input/attendance]'
+      - id: IQwkuQmSL7
+        formula: '[events input/venue]'
+      name: 'events '
+      metrics:
+      - id: U2y_4iZy01
+        formula: Sum([attendance])
+      order:
+      - CSba3GEPV1
+      - ju5XBTEGF9
+      - Io4XgHUwja
+      - IQwkuQmSL7
+    - id: Ni92s4HqNX
+      kind: table
+      source:
+        elementId: 8Uv4uhiXwF
+        kind: table
+      columns:
+      - id: U3flltxJcU
+        formula: '[order_header input/order_id]'
+      - id: 6vt9tH5yQq
+        formula: '[order_header input/event_id]'
+      - id: LTduZvUc2-
+        formula: '[order_header input/amount]'
+      - id: 72TZMIBm_1
+        formula: '[order_header input/area]'
+      name: order_header
+      metrics:
+      - id: 4EIA92rkpq
+        formula: '[amount]'
+        name: Sum of Amount
+      order:
+      - U3flltxJcU
+      - 6vt9tH5yQq
+      - LTduZvUc2-
+      - 72TZMIBm_1

@@ -9,3 +9,171 @@ url: https://staging.sigmacomputing.io/papercranestaging/data-model/25rKfIbDEvo2
 path: My Documents
 latestVersion: 7
 ownerId: xN2V9jH8UA3Jq1xBHe6P68Sth0XDc
+spec:
+  dataModelId: 4499c226-e6fb-4ec6-94d4-7f15cdd8ef61
+  name: Many to Many Test
+  url: https://staging.sigmacomputing.io/papercranestaging/data-model/Many-to-Many-Test-25rKfIbDEvo2Nc3A34VYMV
+  documentVersion: 7
+  latestDocumentVersion: 7
+  schemaVersion: 1
+  ownerId: xN2V9jH8UA3Jq1xBHe6P68Sth0XDc
+  folderId: 6b814a6a-4255-410c-83f8-474e4af98abe
+  createdBy: xN2V9jH8UA3Jq1xBHe6P68Sth0XDc
+  updatedBy: xN2V9jH8UA3Jq1xBHe6P68Sth0XDc
+  createdAt: '2025-12-10T16:59:53.258Z'
+  updatedAt: '2025-12-12T14:04:04.319Z'
+  pages:
+  - id: K5xZqD6Pao
+    name: Page 1
+    elements:
+    - id: vw4mHQZsEy
+      kind: table
+      source:
+        elementId: vDj3Rvzd0Q
+        kind: table
+      columns:
+      - id: 1AIozAzuX-
+        formula: '[f_sales/Retail Date]'
+      - id: VCG-gNg8la
+        formula: '[f_sales/Segment Id]'
+      - id: ldFg1ZJG25
+        formula: '[f_sales/Article]'
+      - id: M5wS0r9Lw5
+        formula: '[f_sales/Net Qty]'
+      - id: Q_ydn7BGDN
+        formula: '[f_sales/Transaction Number]'
+      name: f_sales
+      metrics:
+      - id: 5xx3CugYuB
+        formula: Sum([Net Qty])
+      relationships:
+      - id: KrsQPZrMQN
+        targetElementId: Zxx90fEEBX
+        keys:
+        - sourceColumnId: 1AIozAzuX-
+          targetColumnId: YuEvoYl81Y
+      - id: _2Dda2AN27
+        targetElementId: CzoZmLIymJ
+        keys:
+        - sourceColumnId: VCG-gNg8la
+          targetColumnId: 2y78LwTHaz
+      - id: 6rMBu6Eyhj
+        targetElementId: HBkSeXTD5b
+        keys:
+        - sourceColumnId: ldFg1ZJG25
+          targetColumnId: ArzgjfhlLj
+      order:
+      - 1AIozAzuX-
+      - VCG-gNg8la
+      - ldFg1ZJG25
+      - M5wS0r9Lw5
+      - Q_ydn7BGDN
+    - id: gju8Q0VKQ8
+      kind: table
+      source:
+        elementId: u03BAGtt5p
+        kind: table
+      columns:
+      - id: EY6DMXsKiV
+        formula: '[f_traffic/Retail Date]'
+      - id: yqr8VlDhk4
+        formula: '[f_traffic/Segment Id]'
+      - id: 9Gkdir8TGE
+        formula: '[f_traffic/Store Code Global]'
+      - id: pQb-HFsyFy
+        formula: '[f_traffic/Traffic Count]'
+      name: f_traffic
+      metrics:
+      - id: THskHaqPMe
+        formula: Sum([Traffic Count])
+      relationships:
+      - id: 7YMiTsNtR3
+        targetElementId: Zxx90fEEBX
+        keys:
+        - sourceColumnId: EY6DMXsKiV
+          targetColumnId: YuEvoYl81Y
+      - id: beoTsu1Mnm
+        targetElementId: CzoZmLIymJ
+        keys:
+        - sourceColumnId: yqr8VlDhk4
+          targetColumnId: 2y78LwTHaz
+      order:
+      - EY6DMXsKiV
+      - yqr8VlDhk4
+      - 9Gkdir8TGE
+      - pQb-HFsyFy
+    - id: Zxx90fEEBX
+      kind: table
+      source:
+        elementId: bzV5q5Obij
+        kind: table
+      columns:
+      - id: YuEvoYl81Y
+        formula: '[d_calendar/Calendar Day]'
+      - id: 4uyBkgwl2Y
+        formula: '[d_calendar/Calendar Year]'
+      - id: OqtWvP-fP9
+        formula: '[d_calendar/Calendar Month]'
+      - id: OGYNT9d3_n
+        formula: '[d_calendar/Calendar Quarter]'
+      - id: T0XmoljnUa
+        formula: '[d_calendar/Calendar Week]'
+      name: d_calendar
+      order:
+      - YuEvoYl81Y
+      - 4uyBkgwl2Y
+      - OqtWvP-fP9
+      - OGYNT9d3_n
+      - T0XmoljnUa
+    - id: CzoZmLIymJ
+      kind: table
+      source:
+        elementId: wLYMzwgtkh
+        kind: table
+      columns:
+      - id: 2y78LwTHaz
+        formula: '[d_org/Segment Id]'
+      - id: JVmezB4kfD
+        formula: '[d_org/Source System]'
+      - id: emDS7YRexz
+        formula: '[d_org/Segment Descr]'
+      - id: _Cu5ZGX-s0
+        formula: '[d_org/Country ID]'
+      - id: HSVHUwPn9m
+        formula: '[d_org/Country Segment Descr]'
+      name: d_org
+      order:
+      - 2y78LwTHaz
+      - JVmezB4kfD
+      - emDS7YRexz
+      - _Cu5ZGX-s0
+      - HSVHUwPn9m
+    - id: HBkSeXTD5b
+      kind: table
+      source:
+        elementId: uH5qA4vtJv
+        kind: table
+      columns:
+      - id: ArzgjfhlLj
+        formula: '[d_article/Article ID]'
+      - id: figrpuTf_I
+        formula: '[d_article/Color ID]'
+      - id: qI7YmbPOqk
+        formula: '[d_article/Gender]'
+      - id: zPwpkocFQL
+        formula: '[d_article/Brand Descr]'
+      - id: WeMQNL2ZMB
+        formula: '[d_article/Color Descr]'
+      - id: GmUj4oAYR7
+        formula: '[d_article/Product Division Descr]'
+      name: d_article
+      order:
+      - ArzgjfhlLj
+      - figrpuTf_I
+      - qI7YmbPOqk
+      - zPwpkocFQL
+      - WeMQNL2ZMB
+      - GmUj4oAYR7
+  - id: 0RFyr4b07D
+    name: Page 2
+    elements: []
