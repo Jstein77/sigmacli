@@ -9,20 +9,3 @@ url: https://staging.sigmacomputing.io/papercranestaging/data-model/7M5ZYfqncw1r
 path: My Documents
 latestVersion: 18
 ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-spec:
-  dataModelId: ff7ca155-1bd4-40a9-8728-590ee7bb9a19
-  name: Semantic Aggregates Examples
-  url: https://staging.sigmacomputing.io/papercranestaging/data-model/Semantic-Aggregates-Examples-7M5ZYfqncw1rK0hikmQdDP
-  documentVersion: 18
-  latestDocumentVersion: 18
-  schemaVersion: 1
-  ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-  folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
-  createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-  updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-  createdAt: '2025-11-10T22:07:03.137Z'
-  updatedAt: '2025-12-02T23:10:00.701Z'
-  pages:
-  - id: SPz0TuBQRJ
-    name: Fan Trap
-    elements: []

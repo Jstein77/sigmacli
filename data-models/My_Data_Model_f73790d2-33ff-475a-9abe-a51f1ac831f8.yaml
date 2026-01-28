@@ -9,20 +9,3 @@ url: https://staging.sigmacomputing.io/papercranestaging/data-model/7wuuTIkrJnjq
 path: Papercrane Staging
 latestVersion: 8
 ownerId: bfS4FYf0wrzjjB9mTU8iFIMTQhhHf
-spec:
-  dataModelId: f73790d2-33ff-475a-9abe-a51f1ac831f8
-  name: My Data Model
-  url: https://staging.sigmacomputing.io/papercranestaging/data-model/My-Data-Model-7wuuTIkrJnjqAiWmJKM4f6
-  documentVersion: 8
-  latestDocumentVersion: 8
-  schemaVersion: 1
-  ownerId: bfS4FYf0wrzjjB9mTU8iFIMTQhhHf
-  folderId: 00000000-0000-0000-0000-000000000000
-  createdBy: bfS4FYf0wrzjjB9mTU8iFIMTQhhHf
-  updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-  createdAt: '2025-10-07T10:22:05.844Z'
-  updatedAt: '2025-11-25T01:11:57.624Z'
-  pages:
-  - id: wWDJkyeTjw
-    name: Page 1
-    elements: []

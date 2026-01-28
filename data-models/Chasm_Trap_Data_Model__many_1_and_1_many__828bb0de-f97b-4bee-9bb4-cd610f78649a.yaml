@@ -9,20 +9,3 @@ url: https://staging.sigmacomputing.io/papercranestaging/data-model/3YkQas6qdS8O
 path: My Documents/chasm
 latestVersion: 9
 ownerId: jiGX3TUxFoIfJAlFsMMZnM4MxhPfg
-spec:
-  dataModelId: 828bb0de-f97b-4bee-9bb4-cd610f78649a
-  name: Chasm Trap Data Model (many:1 and 1:many)
-  url: https://staging.sigmacomputing.io/papercranestaging/data-model/Chasm-Trap-Data-Model-many-1-and-1-many-3YkQas6qdS8OncKgDaHewW
-  documentVersion: 9
-  latestDocumentVersion: 9
-  schemaVersion: 1
-  ownerId: jiGX3TUxFoIfJAlFsMMZnM4MxhPfg
-  folderId: 2a0513b6-80fa-4a8e-9c98-22a04728c726
-  createdBy: jiGX3TUxFoIfJAlFsMMZnM4MxhPfg
-  updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-  createdAt: '2025-11-05T21:21:59.523Z'
-  updatedAt: '2025-11-25T01:12:00.365Z'
-  pages:
-  - id: Xm5HLUjMK4
-    name: Page 1
-    elements: []
