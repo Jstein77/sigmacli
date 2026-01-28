@@ -114,3 +114,33 @@ class TestSyncManagerDryRun:
 
         assert not (tmp_path / "data-models").exists() or \
             len(list((tmp_path / "data-models").glob("*.yaml"))) == 0
+
+
+class TestSyncManagerGitOps:
+    def test_no_commit_skips_push_and_pr(self, tmp_path):
+        """When applied changes produce no git diff (file identical to main), skip push/PR."""
+        data_dir = tmp_path / "data-models"
+        data_dir.mkdir()
+        # Pre-populate local with the same model that remote will return
+        model = _make_model("m1", doc_version=1, schema_version=1)
+        _write_local_model(data_dir, model)
+
+        client = MagicMock()
+        client.get_data_models.return_value = [{"dataModelId": "m1"}]
+        client.get_data_model_spec.return_value = model
+
+        mock_repo = MagicMock()
+        mock_repo.is_dirty.return_value = False  # No actual git changes
+
+        with patch("sigma_sdlc.sync.syncer.Repo", return_value=mock_repo):
+            manager = SyncManager(client, tmp_path)
+            # Remove local file to trigger "new" detection
+            for f in data_dir.glob("*.yaml"):
+                f.unlink()
+
+            result = manager.sync(create_pr=True)
+
+        # Should clean up branch, not attempt push or PR
+        mock_repo.git.checkout.assert_any_call("main")
+        mock_repo.git.push.assert_not_called()
+        assert "branch" not in result
