@@ -2,3 +2,6 @@ venv
 .sigma/
 __pycache__/
 *.egg-info/
+plan-claude.md
+CLAUDE.MD
+plan.md
