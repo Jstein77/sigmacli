@@ -1,22 +1,306 @@
 dataModelId: aeecb9f3-fdf1-4d12-9786-5058a2bc41f4
 name: BC Data Model Todd
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/BC-Data-Model-Todd-5k4QE91BDrFdHEE6CwvkAA
-documentVersion: 15
-latestDocumentVersion: 15
+documentVersion: 16
+latestDocumentVersion: 16
 schemaVersion: 1
 ownerId: ikwLCS5iwWlw4IHflxkb7Obkl11Te
 folderId: 7b702d72-5948-4fde-93e4-7cff1f64255a
 createdBy: ikwLCS5iwWlw4IHflxkb7Obkl11Te
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-02-25T16:32:51.872Z'
-updatedAt: '2025-11-25T01:11:55.994Z'
+updatedAt: '2026-01-28T22:50:17.041Z'
 pages:
-- id: Y_18bNGtJ-
+- id: 8VjijDgMhG
   name: Sales Union
-  elements: []
+  elements:
+  - id: rHdCTy1cGH
+    kind: table
+    source:
+      kind: join
+      joins:
+      - left:
+          elementId: k4hUrypGN4
+          kind: table
+        right:
+          connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+          kind: warehouse-table
+          path:
+          - RETAIL
+          - PLUGS_ELECTRONICS
+          - D_CUSTOMER
+        columns:
+        - left: '[Cust Key]'
+          right: '[Cust Key]'
+        joinType: left-outer
+      - left:
+          elementId: k4hUrypGN4
+          kind: table
+        right:
+          connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+          kind: warehouse-table
+          path:
+          - RETAIL
+          - PLUGS_ELECTRONICS
+          - D_PRODUCT
+        columns:
+        - left: '[Product Key]'
+          right: '[Product Key]'
+        joinType: left-outer
+    columns:
+    - id: wMx4q_G1QP
+      formula: '[Sales Transactions Union/Product Key]'
+      name: Product Key UI
+    - id: PAmNsn25Nh
+      formula: '[Sales Transactions Union/Date]'
+    - id: D2MUyF4wyv
+      formula: '[Sales Transactions Union/DOY]'
+    - id: 0GdjSWU3h_
+      formula: '[Sales Transactions Union/Quantity on Hand]'
+    - id: dYqHUXfiOj
+      formula: '[Sales Transactions Union/Sales Quantity]'
+    - id: UFd2ZTEVW-
+      formula: '[Sales Transactions Union/Sales Amount]'
+    - id: zMyvWkUtPk
+      formula: '[Sales Transactions Union/Cost Amount]'
+    - id: Sx5Rje_MeX
+      formula: '[Sales Transactions Union/Cust Key]'
+    - id: 1wcYsmPJ4e
+      formula: '[D_CUSTOMER/Cust Name]'
+    - id: RnweKKd1Cx
+      formula: '[D_PRODUCT/Product Name]'
+    - id: mN4cyi7P_3
+      formula: '[D_PRODUCT/Product Type]'
+    - id: Z_zmTmytyi
+      formula: '[D_PRODUCT/Product Family]'
+    - id: mO_kdd8LKR
+      formula: '[D_PRODUCT/Product Line]'
+    - id: zxoP4OjpDP
+      formula: '[D_PRODUCT/Product Group]'
+    name: Sales Transactions Full
+    metrics:
+    - id: 2ok6AOwQVw
+      formula: SumIf([Quantity on Hand], [DOY] = Max([DOY]))
+      name: Ending On Hand
+    order:
+    - wMx4q_G1QP
+    - PAmNsn25Nh
+    - D2MUyF4wyv
+    - 0GdjSWU3h_
+    - dYqHUXfiOj
+    - UFd2ZTEVW-
+    - zMyvWkUtPk
+    - Sx5Rje_MeX
+    - 1wcYsmPJ4e
+    - RnweKKd1Cx
+    - mN4cyi7P_3
+    - Z_zmTmytyi
+    - mO_kdd8LKR
+    - zxoP4OjpDP
+  - id: aXicdKuEAE
+    kind: table
+    source:
+      kind: join
+      joins:
+      - left:
+          connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+          kind: warehouse-table
+          path:
+          - RETAIL
+          - PLUGS_ELECTRONICS
+          - F_POINT_OF_SALE
+        right:
+          connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+          kind: warehouse-table
+          path:
+          - RETAIL
+          - PLUGS_ELECTRONICS
+          - F_SALES
+        columns:
+        - left: '[Order Number]'
+          right: '[Order Number]'
+        name: F_SALES
+        joinType: inner
+    columns:
+    - id: inode-6zip3gq2hsBtVMIAgm5ktr/ORDER_NUMBER
+      formula: '[F_POINT_OF_SALE/Order Number]'
+    - id: inode-6zip3gq2hsBtVMIAgm5ktr/PRODUCT_KEY
+      formula: '[F_POINT_OF_SALE/Product Key]'
+    - id: inode-6zip3gq2hsBtVMIAgm5ktr/SALES_QUANTITY
+      formula: '[F_POINT_OF_SALE/Sales Quantity]'
+    - id: inode-6zip3gq2hsBtVMIAgm5ktr/SALES_AMOUNT
+      formula: '[F_POINT_OF_SALE/Sales Amount]'
+    - id: inode-6zip3gq2hsBtVMIAgm5ktr/COST_AMOUNT
+      formula: '[F_POINT_OF_SALE/Cost Amount]'
+    - id: Y44nNm5G5L
+      formula: '[F_SALES/Cust Key]'
+    - id: jd60kTmMXf
+      formula: '[F_SALES/Date]'
+    name: Sales Transactions
+    order:
+    - inode-6zip3gq2hsBtVMIAgm5ktr/ORDER_NUMBER
+    - inode-6zip3gq2hsBtVMIAgm5ktr/PRODUCT_KEY
+    - inode-6zip3gq2hsBtVMIAgm5ktr/SALES_QUANTITY
+    - inode-6zip3gq2hsBtVMIAgm5ktr/SALES_AMOUNT
+    - inode-6zip3gq2hsBtVMIAgm5ktr/COST_AMOUNT
+    - Y44nNm5G5L
+    - jd60kTmMXf
+  - id: k4hUrypGN4
+    kind: table
+    source:
+      kind: union
+      sources:
+      - elementId: aXicdKuEAE
+        kind: table
+      - elementId: oVYTJk-Dqe
+        kind: table
+      matches:
+      - outputColumnName: Product Key
+        sourceColumns:
+        - '[Order Number]'
+        - null
+      - outputColumnName: Sales Quantity
+        sourceColumns:
+        - '[Product Key]'
+        - '[Product Key]'
+      - outputColumnName: Sales Amount
+        sourceColumns:
+        - '[Sales Quantity]'
+        - null
+      - outputColumnName: Cost Amount
+        sourceColumns:
+        - '[Sales Amount]'
+        - null
+      - outputColumnName: Cust Key
+        sourceColumns:
+        - '[Cost Amount]'
+        - null
+      - outputColumnName: Date
+        sourceColumns:
+        - null
+        - '[Cost Amount]'
+      - outputColumnName: Quantity on Hand
+        sourceColumns:
+        - null
+        - '[Quantity on Hand]'
+      - outputColumnName: DOY
+        sourceColumns:
+        - null
+        - '[DOY]'
+    columns:
+    - id: YDU58AmpFC
+      formula: '[Union of 2 Sources/Product Key]'
+    - id: hu8rGA-upc
+      formula: '[Union of 2 Sources/Sales Quantity]'
+    - id: DI9OzFyhWb
+      formula: '[Union of 2 Sources/Sales Amount]'
+    - id: 020BvbNBpb
+      formula: '[Union of 2 Sources/Cost Amount]'
+    - id: 6jaGJXwPWV
+      formula: '[Union of 2 Sources/Cust Key]'
+    - id: Hf58AdmDw3
+      formula: '[Union of 2 Sources/Date]'
+    - id: 3pxDYWNdvQ
+      formula: '[Union of 2 Sources/Quantity on Hand]'
+    - id: xhoHxnNoEJ
+      formula: '[Union of 2 Sources/DOY]'
+    name: Sales Transactions Union
+    order:
+    - YDU58AmpFC
+    - hu8rGA-upc
+    - DI9OzFyhWb
+    - 020BvbNBpb
+    - 6jaGJXwPWV
+    - Hf58AdmDw3
+    - 3pxDYWNdvQ
+    - xhoHxnNoEJ
 - id: XdaNg_g_9_
   name: ERD
   elements:
+  - id: Owuj15u61F
+    kind: table
+    source:
+      kind: union
+      sources:
+      - elementId: aXicdKuEAE
+        kind: table
+      - elementId: oVYTJk-Dqe
+        kind: table
+      matches:
+      - outputColumnName: Product Key
+        sourceColumns:
+        - '[Product Key]'
+        - '[Product Key]'
+      - outputColumnName: Sales Quantity
+        sourceColumns:
+        - '[Sales Quantity]'
+        - null
+      - outputColumnName: Sales Amount
+        sourceColumns:
+        - '[Sales Amount]'
+        - null
+      - outputColumnName: Cost Amount
+        sourceColumns:
+        - '[Cost Amount]'
+        - null
+      - outputColumnName: Cust Key
+        sourceColumns:
+        - '[Cust Key]'
+        - null
+      - outputColumnName: Date
+        sourceColumns:
+        - '[Date]'
+        - '[Day of Date]'
+      - outputColumnName: Quantity on Hand
+        sourceColumns:
+        - null
+        - '[Quantity on Hand]'
+      - outputColumnName: DOY
+        sourceColumns:
+        - null
+        - '[DOY]'
+    columns:
+    - id: YDU58AmpFC
+      formula: '[Union of 2 Sources/Product Key]'
+    - id: hu8rGA-upc
+      formula: '[Union of 2 Sources/Sales Quantity]'
+    - id: DI9OzFyhWb
+      formula: '[Union of 2 Sources/Sales Amount]'
+    - id: 020BvbNBpb
+      formula: '[Union of 2 Sources/Cost Amount]'
+    - id: Hf58AdmDw3
+      formula: '[Union of 2 Sources/Date]'
+    - id: 3pxDYWNdvQ
+      formula: '[Union of 2 Sources/Quantity on Hand]'
+    - id: xhoHxnNoEJ
+      formula: '[Union of 2 Sources/DOY]'
+    - id: HgZRj12pqT
+      formula: '[Union of 2 Sources/Cust Key]'
+    name: Sales & Inventory
+    metrics:
+    - id: 7sXhrKwLCK
+      formula: SumIf([Quantity on Hand], [DOY] = Max([DOY]))
+      name: Ending On Hand
+    relationships:
+    - id: DiG_y_W2pu
+      targetElementId: 9mdbAu3hBS
+      keys:
+      - sourceColumnId: YDU58AmpFC
+        targetColumnId: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_KEY
+    - id: tGVAHKSRmh
+      targetElementId: EIOJ1RGxja
+      keys:
+      - sourceColumnId: 6jaGJXwPWV
+        targetColumnId: inode-6ynylrlmOIR7He2MaX96xf/CUST_KEY
+    order:
+    - YDU58AmpFC
+    - hu8rGA-upc
+    - DI9OzFyhWb
+    - 020BvbNBpb
+    - Hf58AdmDw3
+    - 3pxDYWNdvQ
+    - xhoHxnNoEJ
+    - HgZRj12pqT
   - id: 9mdbAu3hBS
     kind: table
     source:
@@ -29,47 +313,32 @@ pages:
     columns:
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_KEY
       formula: '[D_PRODUCT/Product Key]'
-      name: Product Key
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_NAME
       formula: '[D_PRODUCT/Product Name]'
-      name: Product Name
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_TYPE
       formula: '[D_PRODUCT/Product Type]'
-      name: Product Type test
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_FAMILY
       formula: '[D_PRODUCT/Product Family]'
-      name: Product Family
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_LINE
       formula: '[D_PRODUCT/Product Line]'
-      name: Product Line
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_GROUP
       formula: '[D_PRODUCT/Product Group]'
-      name: Product Group
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_DESCRIPTION
       formula: '[D_PRODUCT/Product Description]'
-      name: Product Description
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/SKU_NUMBER
       formula: '[D_PRODUCT/Sku Number]'
-      name: Sku Number
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRICE
       formula: '[D_PRODUCT/Price]'
-      name: Price
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_STATUS
       formula: '[D_PRODUCT/Product Status]'
-      name: Product Status
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_NOTES
       formula: '[D_PRODUCT/Product Notes]'
-      name: Product Notes
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/UPDATED_AT
       formula: '[D_PRODUCT/Updated At]'
-      name: Updated At
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/UPDATED_BY
       formula: '[D_PRODUCT/Updated By]'
-      name: Updated By
     - id: inode-1hoEJ2ZmGAoWEzHn8GAPmn/PROPOSED_PRICE
       formula: '[D_PRODUCT/Proposed Price]'
-      name: Proposed Price
-    name: D_PRODUCT
     order:
     - inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_KEY
     - inode-1hoEJ2ZmGAoWEzHn8GAPmn/PRODUCT_NAME
@@ -97,59 +366,40 @@ pages:
     columns:
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_KEY
       formula: '[D_CUSTOMER/Cust Key]'
-      name: Cust Key
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_NAME
       formula: '[D_CUSTOMER/Cust Name]'
-      name: Cust Name
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_ADDRESS
       formula: '[D_CUSTOMER/Cust Address]'
-      name: Cust Address
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_CITY
       formula: '[D_CUSTOMER/Cust City]'
-      name: Cust City
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_STATE
       formula: '[D_CUSTOMER/Cust State]'
-      name: Cust State
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_ZIP_CODE
       formula: '[D_CUSTOMER/Cust Zip Code]'
-      name: Cust Zip Code
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_COUNTY
       formula: '[D_CUSTOMER/Cust County]'
-      name: Cust County
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_REGION
       formula: '[D_CUSTOMER/Cust Region]'
-      name: Cust Region
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_SINCE
       formula: '[D_CUSTOMER/Cust Since]'
-      name: Cust Since
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_TYPE
       formula: '[D_CUSTOMER/Cust Type]'
-      name: Cust Type
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_GENDER
       formula: '[D_CUSTOMER/Cust Gender]'
-      name: Cust Gender
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_AGE
       formula: '[D_CUSTOMER/Cust Age]'
-      name: Cust Age
     - id: inode-6ynylrlmOIR7He2MaX96xf/AGE_GROUP
       formula: '[D_CUSTOMER/Age Group]'
-      name: Age Group
     - id: inode-6ynylrlmOIR7He2MaX96xf/CIVIL_STATUS
       formula: '[D_CUSTOMER/Civil Status]'
-      name: Civil Status
     - id: inode-6ynylrlmOIR7He2MaX96xf/LOYALTY_PROGRAM
       formula: '[D_CUSTOMER/Loyalty Program]'
-      name: Loyalty Program
     - id: inode-6ynylrlmOIR7He2MaX96xf/CUST_JSON_FIELD
       formula: '[D_CUSTOMER/Cust Json Field]'
-      name: Cust Json Field
     - id: inode-6ynylrlmOIR7He2MaX96xf/UPDATED_AT
       formula: '[D_CUSTOMER/Updated At]'
-      name: Updated At
     - id: inode-6ynylrlmOIR7He2MaX96xf/UPDATED_BY
       formula: '[D_CUSTOMER/Updated By]'
-      name: Updated By
-    name: D_CUSTOMER
     order:
     - inode-6ynylrlmOIR7He2MaX96xf/CUST_KEY
     - inode-6ynylrlmOIR7He2MaX96xf/CUST_NAME
