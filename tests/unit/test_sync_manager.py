@@ -94,10 +94,9 @@ class TestSyncManagerDryRun:
         client.get_data_model.return_value = _make_model("m1")
 
         manager = SyncManager(client, tmp_path)
-        result = manager.sync(workspace_id="ws-specific", dry_run=True)
+        result = manager.sync(dry_run=True)
 
-        client.get_workspaces.assert_not_called()
-        client.get_data_models.assert_called_once_with("ws-specific")
+        client.get_data_models.assert_called_once_with()
 
     def test_dry_run_does_not_write_files(self, tmp_path):
         client = MagicMock()
