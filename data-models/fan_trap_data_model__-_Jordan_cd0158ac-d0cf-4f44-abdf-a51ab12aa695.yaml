@@ -1,11 +1,174 @@
 dataModelId: cd0158ac-d0cf-4f44-abdf-a51ab12aa695
-dataModelUrlId: 6eQ2CJ64wUWQKelO3bNHtr
+name: fan trap data model  - Jordan
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/fan-trap-data-model-Jordan-6eQ2CJ64wUWQKelO3bNHtr
+documentVersion: 18
+latestDocumentVersion: 18
+schemaVersion: 1
+ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-14T01:01:40.545Z'
 updatedAt: '2025-12-03T00:43:25.777Z'
-name: fan trap data model  - Jordan
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/6eQ2CJ64wUWQKelO3bNHtr
-path: My Documents
-latestVersion: 18
-ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+pages:
+- id: 7ESG5XUv8I
+  name: Page 1
+  elements:
+  - id: ZEQBt6umaf
+    kind: table
+    source:
+      elementId: -7Je-3NrQt
+      kind: table
+    columns:
+    - id: 272ZhtHKCt
+      formula: '[events/event_id]'
+    - id: zOFp0dP2vf
+      formula: '[events/event_name]'
+    - id: D6a6sDcQrQ
+      formula: '[events/attendance]'
+    - id: UoWHXhd62g
+      formula: '[events/venue]'
+    metrics:
+    - id: rTupWYr2Uw
+      formula: Sum([attendance])
+      name: Sum Attendance
+    order:
+    - 272ZhtHKCt
+    - zOFp0dP2vf
+    - D6a6sDcQrQ
+    - UoWHXhd62g
+  - id: nGLMYiW3B2
+    kind: table
+    source:
+      elementId: 8Uv4uhiXwF
+      kind: table
+    columns:
+    - id: GnjWQ_DEo9
+      formula: '[orders/order_id]'
+    - id: 9Z1rN-I3ll
+      formula: '[orders/event_id]'
+    - id: h5SGUX9nfb
+      formula: '[orders/amount]'
+    - id: L7JKFXiLhj
+      formula: '[orders/area]'
+    metrics:
+    - id: 0OIGFdBghc
+      formula: Sum([amount])
+      name: Sum Of Amount
+    relationships:
+    - id: aUm49D--QM
+      targetElementId: ZEQBt6umaf
+      keys:
+      - sourceColumnId: 9Z1rN-I3ll
+        targetColumnId: 272ZhtHKCt
+    order:
+    - GnjWQ_DEo9
+    - 9Z1rN-I3ll
+    - h5SGUX9nfb
+    - L7JKFXiLhj
+  - id: FZfoD_2_sb
+    kind: table
+    source:
+      elementId: wIYsCgWb9_
+      kind: table
+    columns:
+    - id: EEuG9qZB-M
+      formula: '[order_details/order_id]'
+    - id: SlYm-zItLd
+      formula: '[order_details/product name]'
+    - id: oOHXErE0qT
+      formula: '[order_details/item_number]'
+    - id: Z1xCECeB9A
+      formula: '[order_details/qty]'
+    - id: F1VQmC-vlP
+      formula: '[order_details/price]'
+    name: order_items
+    metrics:
+    - id: fvIZZQmlhk
+      formula: Count()
+    relationships:
+    - id: 3qiZMjMbQo
+      targetElementId: nGLMYiW3B2
+      keys:
+      - sourceColumnId: EEuG9qZB-M
+        targetColumnId: GnjWQ_DEo9
+    order:
+    - EEuG9qZB-M
+    - SlYm-zItLd
+    - oOHXErE0qT
+    - Z1xCECeB9A
+    - F1VQmC-vlP
+  - id: Or4hwqt9yb
+    kind: table
+    source:
+      dataModelId: de08b74b-3de4-4288-9784-58808f0f02a1
+      elementId: FW7Mho6eRH
+      kind: data-model
+    columns:
+    - id: elCRX8xKN_
+      formula: '[PLUGS/Product Type]'
+    - id: yPro9wP0AY
+      formula: '[PLUGS/Product Family]'
+    - id: dZ1wy0fVXF
+      formula: '[PLUGS/Product Line]'
+    - id: jrxcKnd9Qp
+      formula: '[PLUGS/Product Name]'
+    - id: NaaVCDJtBh
+      formula: '[PLUGS/Brand]'
+    - id: aYfn7fj060
+      formula: '[PLUGS/Store Region]'
+    - id: zFSHnolq1P
+      formula: '[PLUGS/Store State]'
+    - id: h3OvNozDdO
+      formula: '[PLUGS/Store Name]'
+    - id: glKtDmxmer
+      formula: '[PLUGS/Customer Name]'
+    - id: O48WCtZKw2
+      formula: '[PLUGS/Date]'
+    - id: TEDsjXNkWn
+      formula: '[PLUGS/Order Number]'
+    - id: AQtDd9FIPF
+      formula: '[PLUGS/Sku Number]'
+    - id: OhfxCfLk69
+      formula: '[PLUGS/Quantity]'
+    - id: 8igXG7OFA3
+      formula: '[PLUGS/Cost]'
+    - id: fNNCMibv4n
+      formula: '[PLUGS/Price]'
+    - id: 9v0CP__AFf
+      formula: '[PLUGS/Store Key]'
+    - id: 8gABMrNBNV
+      formula: '[PLUGS/Store City]'
+    - id: lPPM2BvB7m
+      formula: '[PLUGS/Store Zip Code]'
+    - id: SILN-cLp0m
+      formula: '[PLUGS/Store Latitude]'
+    - id: O_1kefxxEM
+      formula: '[PLUGS/Store Longitude]'
+    - id: P0-RMguUML
+      formula: '[PLUGS/Cust Key]'
+    - id: BwEby5IG0L
+      formula: '[PLUGS/Cust Json]'
+    order:
+    - elCRX8xKN_
+    - yPro9wP0AY
+    - dZ1wy0fVXF
+    - jrxcKnd9Qp
+    - NaaVCDJtBh
+    - aYfn7fj060
+    - zFSHnolq1P
+    - h3OvNozDdO
+    - glKtDmxmer
+    - O48WCtZKw2
+    - TEDsjXNkWn
+    - AQtDd9FIPF
+    - OhfxCfLk69
+    - 8igXG7OFA3
+    - fNNCMibv4n
+    - 9v0CP__AFf
+    - 8gABMrNBNV
+    - lPPM2BvB7m
+    - SILN-cLp0m
+    - O_1kefxxEM
+    - P0-RMguUML
+    - BwEby5IG0L

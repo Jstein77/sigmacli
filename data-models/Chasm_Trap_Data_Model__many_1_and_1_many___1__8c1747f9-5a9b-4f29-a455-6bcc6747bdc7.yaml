@@ -1,11 +1,113 @@
 dataModelId: 8c1747f9-5a9b-4f29-a455-6bcc6747bdc7
-dataModelUrlId: 4glz2Z5ZExGQXncU5Q5mkv
+name: Chasm Trap Data Model (many:1 and 1:many) (1)
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Chasm-Trap-Data-Model-many-1-and-1-many-1-4glz2Z5ZExGQXncU5Q5mkv
+documentVersion: 20
+latestDocumentVersion: 20
+schemaVersion: 1
+ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+folderId: 9ea21158-7c8e-455a-8d55-d4c0d797477b
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-05T23:41:58.397Z'
 updatedAt: '2025-12-03T00:13:56.481Z'
-name: Chasm Trap Data Model (many:1 and 1:many) (1)
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/4glz2Z5ZExGQXncU5Q5mkv
-path: My Documents
-latestVersion: 20
-ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
+pages:
+- id: Z4YPrO4O-6
+  name: Page 1
+  elements:
+  - id: wfcIMrmJxz
+    kind: table
+    source:
+      connectionId: 2a1aeabe-f2d3-43aa-8236-790390f17d07
+      kind: warehouse-table
+      path:
+      - SHARVIL
+      - PUBLIC
+      - F_POS
+    columns:
+    - id: inode-5v0xWXCsU5E18wmiuLEf6v/PRODUCT_KEY
+      formula: '[F_POS/Product Key]'
+    - id: inode-5v0xWXCsU5E18wmiuLEf6v/DATE_KEY
+      formula: '[F_POS/Date Key]'
+    - id: inode-5v0xWXCsU5E18wmiuLEf6v/SALES
+      formula: '[F_POS/Sales]'
+    relationships:
+    - id: YEZjvJQmB3
+      targetElementId: DU60pn2TDs
+      keys:
+      - sourceColumnId: inode-5v0xWXCsU5E18wmiuLEf6v/PRODUCT_KEY
+        targetColumnId: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_KEY
+    - id: MMQuXOAry8
+      targetElementId: 3FUOfWwz08
+      keys:
+      - sourceColumnId: inode-5v0xWXCsU5E18wmiuLEf6v/DATE_KEY
+        targetColumnId: inode-6DnRATxrxKE30P9wZ9p1Na/DATE_KEY
+    order:
+    - inode-5v0xWXCsU5E18wmiuLEf6v/PRODUCT_KEY
+    - inode-5v0xWXCsU5E18wmiuLEf6v/DATE_KEY
+    - inode-5v0xWXCsU5E18wmiuLEf6v/SALES
+  - id: DU60pn2TDs
+    kind: table
+    source:
+      connectionId: 2a1aeabe-f2d3-43aa-8236-790390f17d07
+      kind: warehouse-table
+      path:
+      - SHARVIL
+      - PUBLIC
+      - D_PRODUCT
+    columns:
+    - id: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_KEY
+      formula: '[D_PRODUCT/Product Key]'
+    - id: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_NAME
+      formula: '[D_PRODUCT/Product Name]'
+    relationships:
+    - id: 7VEyF-yMRc
+      targetElementId: ABcTufI80a
+      keys:
+      - sourceColumnId: inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_KEY
+        targetColumnId: inode-59DfSX7HJo4KCd4dxMysJE/PRODUCT_KEY
+    order:
+    - inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_KEY
+    - inode-ReSROn2R1jMGNhdauPzBV/PRODUCT_NAME
+  - id: ABcTufI80a
+    kind: table
+    source:
+      connectionId: 2a1aeabe-f2d3-43aa-8236-790390f17d07
+      kind: warehouse-table
+      path:
+      - SHARVIL
+      - PUBLIC
+      - F_INVENTORY
+    columns:
+    - id: inode-59DfSX7HJo4KCd4dxMysJE/PRODUCT_KEY
+      formula: '[F_INVENTORY/Product Key]'
+    - id: inode-59DfSX7HJo4KCd4dxMysJE/DATE_KEY
+      formula: '[F_INVENTORY/Date Key]'
+    - id: inode-59DfSX7HJo4KCd4dxMysJE/ON_HAND
+      formula: '[F_INVENTORY/On Hand]'
+    relationships:
+    - id: 4bZ2UG3UxS
+      targetElementId: 3FUOfWwz08
+      keys:
+      - sourceColumnId: inode-59DfSX7HJo4KCd4dxMysJE/DATE_KEY
+        targetColumnId: inode-6DnRATxrxKE30P9wZ9p1Na/DATE_KEY
+    order:
+    - inode-59DfSX7HJo4KCd4dxMysJE/PRODUCT_KEY
+    - inode-59DfSX7HJo4KCd4dxMysJE/DATE_KEY
+    - inode-59DfSX7HJo4KCd4dxMysJE/ON_HAND
+  - id: 3FUOfWwz08
+    kind: table
+    source:
+      connectionId: 2a1aeabe-f2d3-43aa-8236-790390f17d07
+      kind: warehouse-table
+      path:
+      - SHARVIL
+      - PUBLIC
+      - D_DATE
+    columns:
+    - id: inode-6DnRATxrxKE30P9wZ9p1Na/DATE_KEY
+      formula: '[D_DATE/Date Key]'
+    - id: inode-6DnRATxrxKE30P9wZ9p1Na/DATE
+      formula: '[D_DATE/Date]'
+    order:
+    - inode-6DnRATxrxKE30P9wZ9p1Na/DATE_KEY
+    - inode-6DnRATxrxKE30P9wZ9p1Na/DATE

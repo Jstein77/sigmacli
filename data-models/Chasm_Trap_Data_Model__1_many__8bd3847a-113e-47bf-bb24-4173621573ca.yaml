@@ -1,11 +1,16 @@
 dataModelId: 8bd3847a-113e-47bf-bb24-4173621573ca
-dataModelUrlId: 4fQB1GCalc0LhdQNMp3hZ8
+name: Chasm Trap Data Model (1:many)
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Chasm-Trap-Data-Model-1-many-4fQB1GCalc0LhdQNMp3hZ8
+documentVersion: 10
+latestDocumentVersion: 10
+schemaVersion: 1
+ownerId: jiGX3TUxFoIfJAlFsMMZnM4MxhPfg
+folderId: 2a0513b6-80fa-4a8e-9c98-22a04728c726
 createdBy: jiGX3TUxFoIfJAlFsMMZnM4MxhPfg
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-05T00:24:56.354Z'
 updatedAt: '2025-11-25T01:12:03.953Z'
-name: Chasm Trap Data Model (1:many)
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/4fQB1GCalc0LhdQNMp3hZ8
-path: My Documents/chasm
-latestVersion: 10
-ownerId: jiGX3TUxFoIfJAlFsMMZnM4MxhPfg
+pages:
+- id: UVQxbDBedU
+  name: Page 1
+  elements: []

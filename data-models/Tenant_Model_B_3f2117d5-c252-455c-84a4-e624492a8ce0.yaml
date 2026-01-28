@@ -1,11 +1,101 @@
 dataModelId: 3f2117d5-c252-455c-84a4-e624492a8ce0
-dataModelUrlId: 1V7DGTAw8CmtZskDaKoFYk
+name: Tenant Model B
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/Tenant-Model-B-1V7DGTAw8CmtZskDaKoFYk
+documentVersion: 22
+latestDocumentVersion: 22
+schemaVersion: 1
+ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
+folderId: def06fd9-4c64-411b-a095-b04a74e245de
 createdBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
 updatedBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
 createdAt: '2025-11-26T15:46:12.890Z'
 updatedAt: '2026-01-28T01:49:31.772Z'
-name: Tenant Model B
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/1V7DGTAw8CmtZskDaKoFYk
-path: 1. Models/Client Models
-latestVersion: 22
-ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
+pages:
+- id: 9sj12dpfMx
+  name: Page 1
+  elements:
+  - id: abcB5jGbMQ
+    kind: table
+    source:
+      connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
+      kind: warehouse-table
+      path:
+      - RETAIL
+      - PLUGS_ELECTRONICS
+      - PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
+    columns:
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/ORDER_NUMBER
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]'
+      name: Order Number
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/DATE
+      formula: DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
+      name: Day of Date
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/SKU_NUMBER
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Sku Number]'
+      name: Sku Number
+    - id: 7fW5XEQ0-k
+      formula: Left([Sku Number], 2)
+      name: Sku Code
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/QUANTITY
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Quantity]'
+      name: Quantity
+      description: Also known as, amount, volume, or total
+    - id: Gp14iaPksI
+      formula: '[Quantity] * 2'
+      name: Double Quantity
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/COST
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cost]'
+      name: Cost
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRICE
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Price]'
+      name: Price
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_TYPE
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Type]'
+      name: Product Type
+    - id: 7iTQqzYs0_
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Family]'
+      name: Product Family
+    - id: 2ofq_xdAS6
+      formula: SplitPart([Product Name], "-", 1)
+      name: Product Code
+    - id: eXv4vxVjLL
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Line]'
+      name: Product Line
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_NAME
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Name]'
+      name: Product Name
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_NAME
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]'
+      name: Store Name
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_REGION
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region]'
+      name: Store Region
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/STORE_STATE
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store State]'
+      name: Store State
+    - id: inode-3kb5TXjW54u4nZqm5VsHhj/CUSTOMER_NAME
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Customer Name]'
+      name: Customer Name
+    - id: zqs2pjPu0f
+      formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cust Key]'
+      name: Cust Key
+    name: PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
+    order:
+    - inode-3kb5TXjW54u4nZqm5VsHhj/ORDER_NUMBER
+    - inode-3kb5TXjW54u4nZqm5VsHhj/DATE
+    - inode-3kb5TXjW54u4nZqm5VsHhj/SKU_NUMBER
+    - 7fW5XEQ0-k
+    - inode-3kb5TXjW54u4nZqm5VsHhj/QUANTITY
+    - Gp14iaPksI
+    - inode-3kb5TXjW54u4nZqm5VsHhj/COST
+    - inode-3kb5TXjW54u4nZqm5VsHhj/PRICE
+    - inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_TYPE
+    - 7iTQqzYs0_
+    - 2ofq_xdAS6
+    - eXv4vxVjLL
+    - inode-3kb5TXjW54u4nZqm5VsHhj/PRODUCT_NAME
+    - inode-3kb5TXjW54u4nZqm5VsHhj/STORE_NAME
+    - inode-3kb5TXjW54u4nZqm5VsHhj/STORE_REGION
+    - inode-3kb5TXjW54u4nZqm5VsHhj/STORE_STATE
+    - inode-3kb5TXjW54u4nZqm5VsHhj/CUSTOMER_NAME
+    - zqs2pjPu0f
