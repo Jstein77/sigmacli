@@ -53,6 +53,10 @@ class SyncManager:
             changes["summary"] = generate_diff_summary(changes)
             return changes
 
+        if not changes["new"] and not changes["updated"] and not changes["deleted"]:
+            changes["summary"] = generate_diff_summary(changes)
+            return changes
+
         # Apply changes on a new branch
         repo = Repo(self.repo_path)
         branch_name = f"sigma-sync-{datetime.now().strftime('%Y%m%d-%H%M%S')}"
@@ -63,6 +67,7 @@ class SyncManager:
             self._commit(repo, changes)
 
             if create_pr:
+                repo.git.push("--set-upstream", "origin", branch_name)
                 self._create_pr(branch_name, changes)
         except Exception:
             repo.git.checkout("main")
