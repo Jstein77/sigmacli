@@ -111,7 +111,7 @@ class SigmaClient:
         return self._request("GET", f"/v2/dataModels/{model_id}/spec")
 
     def create_data_model(self, config: dict) -> dict:
-        return self._request("POST", "/v2/dataModels", json=config)
+        return self._request("POST", "/v2/dataModels/spec", json=config)
 
     def update_data_model(self, model_id: str, config: dict) -> dict:
-        return self._request("PUT", f"/v2/dataModels/{model_id}", json=config)
+        return self._request("PUT", f"/v2/dataModels/{model_id}/spec", json=config)

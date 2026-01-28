@@ -1,4 +1,5 @@
 import logging
+import subprocess
 from pathlib import Path
 
 from sigma_sdlc.client.sigma_client import SigmaAPIError, SigmaClient
@@ -78,12 +79,18 @@ class DeployManager:
                 payload = _content_fields(local_data)
                 payload.pop("dataModelId", None)
                 response = self.client.update_data_model(model_id, payload)
+                # Re-fetch spec to get updated version metadata
+                refreshed = self.client.get_data_model_spec(model_id)
+                response.update(refreshed)
                 logger.info("Pushed model %s", name)
                 results["pushed"].append({"name": name})
                 self._update_local_version(model_id, local_data, response)
             except SigmaAPIError as e:
                 logger.error("Failed to push model %s: %s", name, e)
                 results["failed"].append({"name": name, "error": str(e)})
+
+        if results["pushed"] and not dry_run:
+            self._auto_commit_and_push()
 
         return results
 
@@ -99,11 +106,48 @@ class DeployManager:
         return index
 
     def _update_local_version(self, model_id: str, local_data: dict, response: dict) -> None:
-        for key in ("documentVersion", "latestDocumentVersion", "schemaVersion", "updatedAt"):
-            if key in response:
-                local_data[key] = response[key]
+        version_keys = ("documentVersion", "latestDocumentVersion", "schemaVersion", "updatedAt")
+        updated_keys = [k for k in version_keys if k in response]
+        if not updated_keys:
+            logger.warning("API response for %s contains no version keys", model_id)
+            return
+
+        for key in updated_keys:
+            local_data[key] = response[key]
 
         path = find_model_file(self.data_models_dir, model_id)
-        if path:
-            write_yaml_file(path, local_data)
-            logger.debug("Updated local version for %s", model_id)
+        if not path:
+            logger.warning("Local file not found for model %s, cannot update version", model_id)
+            return
+
+        write_yaml_file(path, local_data)
+
+        # Read back and verify
+        written = load_yaml_file(path)
+        for key in updated_keys:
+            if written.get(key) != local_data[key]:
+                logger.warning(
+                    "Verification failed for %s: key %s expected %r, got %r",
+                    model_id, key, local_data[key], written.get(key),
+                )
+                return
+
+        logger.debug("Updated local version for %s", model_id)
+
+    def _auto_commit_and_push(self) -> None:
+        try:
+            subprocess.run(
+                ["git", "add", "data-models/"],
+                cwd=self.repo_path, check=True, capture_output=True,
+            )
+            subprocess.run(
+                ["git", "commit", "-m", "Post-deploy: Update document versions"],
+                cwd=self.repo_path, check=True, capture_output=True,
+            )
+            subprocess.run(
+                ["git", "push"],
+                cwd=self.repo_path, check=True, capture_output=True,
+            )
+            logger.info("Auto-committed and pushed version updates")
+        except subprocess.CalledProcessError as e:
+            logger.error("Git auto-commit/push failed: %s", e.stderr.decode() if e.stderr else e)
