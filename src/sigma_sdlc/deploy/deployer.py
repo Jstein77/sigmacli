@@ -14,17 +14,6 @@ from sigma_sdlc.sync.file_utils import (
 logger = logging.getLogger(__name__)
 
 METADATA_KEYS = {
-    "dataModelId",
-    "documentVersion",
-    "latestDocumentVersion",
-    "schemaVersion",
-    "updatedAt",
-    "createdAt",
-    "ownerId",
-    "createdBy",
-    "updatedBy",
-    "url",
-    "folderId",
     "success",
 }
 

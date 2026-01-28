@@ -76,6 +76,11 @@ class SigmaClient:
                     continue
                 raise SigmaAPIError(resp.status_code, f"Server error after {max_retries} retries")
 
+            if resp.status_code == 400:
+                body = resp.text
+                logger.error("400 Bad Request for %s %s: %s", method, url, body)
+                raise SigmaAPIError(400, f"Bad Request: {body}")
+
             resp.raise_for_status()
             return resp.json() if resp.content else {}
 
