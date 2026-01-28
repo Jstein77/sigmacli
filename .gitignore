@@ -1,2 +1,4 @@
 venv
 .sigma/
+__pycache__/
+*.egg-info/
