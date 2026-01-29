@@ -6,7 +6,18 @@ build-backend = "setuptools.build_meta"
 name = "sigma-sdlc"
 version = "0.1.0"
 description = "CLI tool for managing Sigma data models with Git workflows"
+license = "Apache-2.0"
+authors = [{name = "Sigma Computing"}]
+readme = "README.md"
 requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+"Topic :: Software Development :: Version Control",
+]
 dependencies = [
     "click>=8.1.0",
     "requests>=2.31.0",
@@ -21,6 +32,10 @@ sigma-sdlc = "sigma_sdlc.cli.main:cli"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[project.urls]
+Homepage = "https://github.com/sigmacomputing/sigma-sdlc"
+Repository = "https://github.com/sigmacomputing/sigma-sdlc"
 
 [project.optional-dependencies]
 dev = [
