@@ -1,15 +1,15 @@
 dataModelId: 34e914d2-95dc-43e4-a4f7-740724348c44
 name: Base Model
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/Base-Model-1rVegJWviTQ29TZMtGowDb
-documentVersion: 13
-latestDocumentVersion: 13
+documentVersion: 14
+latestDocumentVersion: 14
 schemaVersion: 1
 ownerId: kzvcPwMYcbg001ijTGnS8b7giGKFs
 folderId: 43814f5c-f9a6-481c-a835-8a5236efa61e
 createdBy: kzvcPwMYcbg001ijTGnS8b7giGKFs
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2025-11-24T17:07:37.064Z'
-updatedAt: '2026-01-29T00:23:25.895Z'
+updatedAt: '2026-01-29T00:23:52.325Z'
 pages:
 - id: _nlpFsX7jv
   name: Facts

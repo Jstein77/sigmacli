@@ -1,15 +1,15 @@
 dataModelId: 7543f6f5-2db6-4023-b072-c2e52bae3bb1
 name: Test Create
 url: https://staging.sigmacomputing.io/papercranestaging/data-model/Test-Create-3zha3vmVwmKVA4uvDbDj8t
-documentVersion: 11
-latestDocumentVersion: 11
+documentVersion: 12
+latestDocumentVersion: 12
 schemaVersion: 1
 ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 folderId: 43814f5c-f9a6-481c-a835-8a5236efa61e
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 createdAt: '2026-01-28T23:25:15.761Z'
-updatedAt: '2026-01-29T00:23:37.044Z'
+updatedAt: '2026-01-29T00:24:00.212Z'
 pages:
 - id: _nlpFsX7jv
   name: Facts
