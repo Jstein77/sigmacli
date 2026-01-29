@@ -23,6 +23,10 @@ def _content_fields(model: dict) -> dict:
 
 
 def has_content_changes(local: dict, remote: dict) -> bool:
+    # if _content_fields(local) != _content_fields(remote):
+    #     print(_content_fields(local))
+    #     print(_content_fields(remote))
+    #     return print("Content changes")
     return _content_fields(local) != _content_fields(remote)
 
 
@@ -84,9 +88,10 @@ class DeployManager:
 
             # Update local data with real ID and all metadata from response
             local_data["dataModelId"] = new_id
+            ## Replace all keys in local yaml with sigma generted keys
             for key, value in response.items():
-                if key != "pages":
-                    local_data[key] = value
+                print(key, value)    
+                local_data[key] = value
 
             new_filename = get_model_filename(local_data)
             new_path = self.data_models_dir / new_filename

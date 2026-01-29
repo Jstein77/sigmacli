@@ -1,28 +1,40 @@
-# code-rep-demo
-Demo of common workflows with code-based sigma objects.
+# Sigma CLI
+A CLI tool for managing Sigma data models with Git. It provides a simple interface for interacting with Sigma's data model APIs
+and provides an easy workflow to write, review and deploy Sigma data models as code.
 
-This script has a dependency on [Sigmoid](https://github.com/sigmacomputing/sigmoid). Clone this repo to your local machine and run the following command to install Sigmoid:
+## Quick Start
+1. To authenticate, add your Client ID, client secret, and base URL to credentials.yml in the .sigma directory.
+
+``` yaml
+profiles:
+  default:
+    base_url: https://api.staging.us.aws.sigmacomputing.io
+    client_id: your_client_id
+    client_secret: your_client_secret
 ```
-pip install sigmoid
+2. Next install sigma-sdlc
+```bash
+pip install sigma-sdlc
 ```
+3. Sync your data models:
+```bash
+sigma sync
+```
+You're ready to go!
 
-## GitHub Actions
+## Features
+* Authentication: A simple way to generate an auth token using a client and secret from Sigma
+* Sync data models from Sigma to your Git repo: Sigma is the source of truth for data model code. The sync command makes sure your remote repo incorporates all changes made in Sigma
+* Deploy data models to Sigma: Deploy all changes made locally to Sigma
 
-This repository includes a GitHub Actions workflow that automatically runs the `update_changed_data_models.py` script whenever data model YAML files are modified.
 
-### Setup
+## Essential Commands
+* `sigma login`: Authenticates with Sigma and stores credentials
+* `sigma sync`: Syncs data models from Sigma to your local repo
+* `sigma deploy`: Deploys data models to Sigma
 
-To use the GitHub Actions workflow, configure the following secrets in your repository settings:
-
-- `SIGMA_CLIENT_ID` - Your Sigma client ID
-- `SIGMA_SECRET` - Your Sigma client secret
-- `SIGMA_ORIGIN` - Your Sigma instance URL (e.g., `https://app.sigmacomputing.com`)
-
-The sigmoid package will use these credentials to automatically generate an API key for authentication.
-
-The workflow will:
-1. Trigger on pushes to the `main` branch that modify files in `data-models/`
-2. Can also be triggered manually via workflow_dispatch
-3. Install the sigmoid package from GitHub
-4. Run the update script to sync data models with Sigma
-5. Commit any changes made by the script (e.g., server-assigned IDs)
+## Example Workflow
+1. Make sure you have authenticated with `sigma login`
+2. Sync data models from Sigma to your local repo with `sigma sync`
+3. Make changes to the data models in your local repo
+4. Deploy the changes to Sigma with `sigma deploy`

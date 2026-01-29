@@ -1,20 +1,20 @@
-dataModelId: 7543f6f5-2db6-4023-b072-c2e52bae3bb1
-name: Test Create
-url: https://staging.sigmacomputing.io/papercranestaging/data-model/Test-Create-3zha3vmVwmKVA4uvDbDj8t
-documentVersion: 12
-latestDocumentVersion: 12
+dataModelId: 368149f4-1a90-4977-8447-7fd03a1b6133
+name: test create 3
+url: https://staging.sigmacomputing.io/papercranestaging/data-model/test-create-3-1EQFAIcpB1NinrQ0CPEU0z
+documentVersion: 1
+latestDocumentVersion: 1
 schemaVersion: 1
 ownerId: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 folderId: 43814f5c-f9a6-481c-a835-8a5236efa61e
 createdBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
 updatedBy: T3koilo7f6xuiBkE2BIKOjHIlXPoP
-createdAt: '2026-01-28T23:25:15.761Z'
-updatedAt: '2026-01-29T00:24:00.212Z'
+createdAt: '2026-01-29T00:30:38.649Z'
+updatedAt: '2026-01-29T00:30:38.649Z'
 pages:
-- id: LdPYtBAqEg
+- id: snDCDuicKL
   name: Facts
   elements:
-  - id: llAMLuQ0eh
+  - id: DYRp5rJdge
     kind: table
     source:
       connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
@@ -24,83 +24,83 @@ pages:
       - PLUGS_ELECTRONICS
       - PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA
     columns:
-    - id: 8kWzA_9roB
+    - id: sTdJVs3mE1
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Order Number]'
       name: Order Number UI Change
-    - id: _EP_7EsYiQ
+    - id: NCuDtzEyo0
       formula: DateTrunc("day", [PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Date])
-    - id: BRhb9ch9sz
+    - id: fpR4S4vE_E
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Sku Number]'
-    - id: rkOcnhBjF4
+    - id: rRZEmo9mql
       formula: Left([Sku Number], 2)
       name: Sku Code
-    - id: Z1arcG_0c_
+    - id: jTcWIDEHf4
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Quantity]'
-    - id: cIfViLnlkr
+    - id: CgZHH1AXjG
       formula: '[Quantity] * 2'
       name: Double Quantity
-    - id: ezo3GOEI9Y
+    - id: Gw6JIGcLMv
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cost]'
-    - id: _lT0RvYaz1
+    - id: wI63oJx6RV
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Price]'
-    - id: 1mA1WdiGOA
+    - id: AMO-reJQ5A
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Type]'
-    - id: M1wHxwEx3n
+    - id: mFqioQScfv
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Family]'
-    - id: wSN8l56Mr2
+    - id: YmID88fp_v
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Line]'
-    - id: ndMIV0JfQK
+    - id: dxcgkRzU_n
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Product Name]'
-    - id: LXY5XAlnct
+    - id: e4ItFDM3DD
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Name]'
-    - id: KJOEgv9yau
+    - id: sqS0isfN_K
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store Region]'
-    - id: WatbG9YUWu
+    - id: XObBQ_hnWr
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Store State]'
-    - id: Jprond_wUp
+    - id: vdB5alyjWo
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Customer Name]'
-    - id: qaLmcjFStz
+    - id: z2aNnrgGQ4
       formula: '[PLUGS_ELECTRONICS_HANDS_ON_LAB_DATA/Cust Key]'
     metrics:
-    - id: Eki1zeaef8
+    - id: YSjLQxY4ro
       formula: Sum([Quantity]) / CountDistinct([Order Number UI Change])
       name: Avg Basket Size
-    - id: TqraAwQQca
+    - id: LsS6vKxwQj
       formula: Sum(([Price] - [Cost]) * [Quantity]) / Sum([Price] * [Quantity])
       name: Profit Margin
     relationships:
-    - id: ejznDaVjqn
-      targetElementId: ieaEt5-yXD
+    - id: j24DBMtJ0c
+      targetElementId: -Sx1V7bVMi
       keys:
-      - sourceColumnId: qaLmcjFStz
-        targetColumnId: DJaFV3Uuzc
-    - id: sXfhPwe13v
-      targetElementId: GcCGWjUOl3
+      - sourceColumnId: z2aNnrgGQ4
+        targetColumnId: AHSr1_ihnY
+    - id: LRpspy2F8y
+      targetElementId: L8wRQYvPNI
       keys:
-      - sourceColumnId: BRhb9ch9sz
-        targetColumnId: nxyvf9YUvq
+      - sourceColumnId: fpR4S4vE_E
+        targetColumnId: ETLD_Oo23Y
     order:
-    - 8kWzA_9roB
-    - _EP_7EsYiQ
-    - BRhb9ch9sz
-    - rkOcnhBjF4
-    - Z1arcG_0c_
-    - cIfViLnlkr
-    - ezo3GOEI9Y
-    - _lT0RvYaz1
-    - 1mA1WdiGOA
-    - M1wHxwEx3n
-    - wSN8l56Mr2
-    - ndMIV0JfQK
-    - LXY5XAlnct
-    - KJOEgv9yau
-    - WatbG9YUWu
-    - Jprond_wUp
-    - qaLmcjFStz
-- id: ntqxkfybDs
+    - sTdJVs3mE1
+    - NCuDtzEyo0
+    - fpR4S4vE_E
+    - rRZEmo9mql
+    - jTcWIDEHf4
+    - CgZHH1AXjG
+    - Gw6JIGcLMv
+    - wI63oJx6RV
+    - AMO-reJQ5A
+    - mFqioQScfv
+    - YmID88fp_v
+    - dxcgkRzU_n
+    - e4ItFDM3DD
+    - sqS0isfN_K
+    - XObBQ_hnWr
+    - vdB5alyjWo
+    - z2aNnrgGQ4
+- id: YEm4n5z6M4
   name: Dimensions
   elements:
-  - id: ieaEt5-yXD
+  - id: -Sx1V7bVMi
     kind: table
     source:
       connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
@@ -110,56 +110,56 @@ pages:
       - PLUGS_ELECTRONICS
       - D_CUSTOMER
     columns:
-    - id: DJaFV3Uuzc
+    - id: AHSr1_ihnY
       formula: '[D_CUSTOMER/Cust Key]'
-    - id: gxrDGhBgtj
+    - id: Pi0DAp2s0z
       formula: '[D_CUSTOMER/Cust Name]'
-    - id: SzNvaEJEZy
+    - id: n9GUPkMzwQ
       formula: '[D_CUSTOMER/Cust Address]'
-    - id: qF_znS4DyN
+    - id: XnAu5rTMWB
       formula: '[D_CUSTOMER/Cust City]'
-    - id: 6d1ZFMesHk
+    - id: VSkRFxvhBl
       formula: '[D_CUSTOMER/Cust State]'
-    - id: ARIIRxt92A
+    - id: MBopl-Roiz
       formula: '[D_CUSTOMER/Cust Zip Code]'
-    - id: -FxsDYkp7C
+    - id: uMtSg8qbqA
       formula: '[D_CUSTOMER/Cust County]'
-    - id: sOH4LJKJuF
+    - id: DobyS0U-os
       formula: '[D_CUSTOMER/Cust Region]'
-    - id: T1pPJrwucg
+    - id: u0wndRiwP7
       formula: '[D_CUSTOMER/Cust Since]'
-    - id: C37Ffa68oL
+    - id: O4bBBpe4Ez
       formula: '[D_CUSTOMER/Cust Type]'
-    - id: o3_OXq4vEr
+    - id: SnqdxjtiSV
       formula: '[D_CUSTOMER/Cust Gender]'
-    - id: CmrBvRR3iX
+    - id: 7vvPytECwt
       formula: '[D_CUSTOMER/Cust Age]'
-    - id: 7oY3d6HTFe
+    - id: xwNZII982b
       formula: '[D_CUSTOMER/Age Group]'
-    - id: kDwaxnBrlE
+    - id: kyjyRQKdX_
       formula: '[D_CUSTOMER/Civil Status]'
-    - id: BrhTZhJc-V
+    - id: KsxGQE52Bs
       formula: '[D_CUSTOMER/Loyalty Program]'
-    - id: Hpn-Eif_iQ
+    - id: O_Ad81yuz8
       formula: '[D_CUSTOMER/Cust Json Field]'
     order:
-    - DJaFV3Uuzc
-    - gxrDGhBgtj
-    - SzNvaEJEZy
-    - qF_znS4DyN
-    - 6d1ZFMesHk
-    - ARIIRxt92A
-    - -FxsDYkp7C
-    - sOH4LJKJuF
-    - T1pPJrwucg
-    - C37Ffa68oL
-    - o3_OXq4vEr
-    - CmrBvRR3iX
-    - 7oY3d6HTFe
-    - kDwaxnBrlE
-    - BrhTZhJc-V
-    - Hpn-Eif_iQ
-  - id: GcCGWjUOl3
+    - AHSr1_ihnY
+    - Pi0DAp2s0z
+    - n9GUPkMzwQ
+    - XnAu5rTMWB
+    - VSkRFxvhBl
+    - MBopl-Roiz
+    - uMtSg8qbqA
+    - DobyS0U-os
+    - u0wndRiwP7
+    - O4bBBpe4Ez
+    - SnqdxjtiSV
+    - 7vvPytECwt
+    - xwNZII982b
+    - kyjyRQKdX_
+    - KsxGQE52Bs
+    - O_Ad81yuz8
+  - id: L8wRQYvPNI
     kind: table
     source:
       connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
@@ -169,53 +169,53 @@ pages:
       - PLUGS_ELECTRONICS
       - D_PRODUCT
     columns:
-    - id: e1blCC1MBA
+    - id: pApcu7iK6K
       formula: '[D_PRODUCT/Product Key]'
-    - id: 9RuNKwakTH
+    - id: ZmxCGjhxH0
       formula: '[D_PRODUCT/Product Name]'
-    - id: nko8dTvgnv
+    - id: 7ndvHSRSac
       formula: '[D_PRODUCT/Product Type]'
-    - id: vaJfH3j2oS
+    - id: WkBVADRyBd
       formula: '[D_PRODUCT/Product Family]'
-    - id: misNQyWw2a
+    - id: NppbOXfsUE
       formula: '[D_PRODUCT/Product Line]'
-    - id: 81uAXFqj1x
+    - id: 2BegR5o5j5
       formula: '[D_PRODUCT/Product Group]'
-    - id: S5tFCgxv_-
+    - id: 7_3woXI1YX
       formula: '[D_PRODUCT/Product Description]'
-    - id: nxyvf9YUvq
+    - id: ETLD_Oo23Y
       formula: '[D_PRODUCT/Sku Number]'
-    - id: JsmRUSU605
+    - id: FdwgqPdu20
       formula: '[D_PRODUCT/Price]'
-    - id: C7HQJwLf72
+    - id: fNGOl9evRA
       formula: '[D_PRODUCT/Product Status]'
-    - id: jwNooFo7yZ
+    - id: kioCCOJvyC
       formula: '[D_PRODUCT/Product Notes]'
-    - id: _PpgW9UWv_
+    - id: Uj9FOUEuWO
       formula: '[D_PRODUCT/Updated At]'
-    - id: hmaJzeBTmL
+    - id: 5p6gtxHJ0R
       formula: '[D_PRODUCT/Updated By]'
-    - id: o2nzET-h2W
+    - id: RkZWR3vUwe
       formula: '[D_PRODUCT/Proposed Price]'
     order:
-    - e1blCC1MBA
-    - 9RuNKwakTH
-    - nko8dTvgnv
-    - vaJfH3j2oS
-    - misNQyWw2a
-    - 81uAXFqj1x
-    - S5tFCgxv_-
-    - nxyvf9YUvq
-    - JsmRUSU605
-    - C7HQJwLf72
-    - jwNooFo7yZ
-    - _PpgW9UWv_
-    - hmaJzeBTmL
-    - o2nzET-h2W
-- id: y47UTXmqoL
+    - pApcu7iK6K
+    - ZmxCGjhxH0
+    - 7ndvHSRSac
+    - WkBVADRyBd
+    - NppbOXfsUE
+    - 2BegR5o5j5
+    - 7_3woXI1YX
+    - ETLD_Oo23Y
+    - FdwgqPdu20
+    - fNGOl9evRA
+    - kioCCOJvyC
+    - Uj9FOUEuWO
+    - 5p6gtxHJ0R
+    - RkZWR3vUwe
+- id: NMADwhp8Dz
   name: Custom SQL
   elements:
-  - id: fsLfi8uCXQ
+  - id: qLl2f__T-e
     kind: table
     source:
       connectionId: 1653d1af-46f3-4bcf-a754-6fefc004332f
@@ -223,70 +223,71 @@ pages:
         where STORE_REGION = 'West'
       kind: sql
     columns:
-    - id: pU5HHvF00U
+    - id: clunIlkLIZ
       formula: '[Custom SQL/ORDER_NUMBER]'
-    - id: 1ksP_UUdV9
+    - id: j4M9TuzNZU
       formula: '[Custom SQL/DATE]'
-    - id: HNSPfrWzLQ
+    - id: nkmaVDBkJe
       formula: '[Custom SQL/SKU_NUMBER]'
-    - id: vb2cGFwcqU
+    - id: 6T_IKMFhVh
       formula: '[Custom SQL/QUANTITY]'
-    - id: lRzP1Qz-Wb
+    - id: Lak6O2OCy8
       formula: '[Custom SQL/COST]'
-    - id: F9F0GHcpwg
+    - id: P53TEhlgWv
       formula: '[Custom SQL/PRICE]'
-    - id: 4BGNLZxE88
+    - id: LVUE21RQOv
       formula: '[Custom SQL/PRODUCT_TYPE]'
-    - id: aWOwmFrZXE
+    - id: hC08ckxpDi
       formula: '[Custom SQL/PRODUCT_FAMILY]'
-    - id: 0MD5c2M1mT
+    - id: ae48BWZPkC
       formula: '[Custom SQL/PRODUCT_LINE]'
-    - id: FUbQJ0EfF-
+    - id: plof3fCo8Y
       formula: '[Custom SQL/BRAND]'
-    - id: md3vSe7m1L
+    - id: aE-jvcMQeU
       formula: '[Custom SQL/PRODUCT_NAME]'
-    - id: qs8z7L9R6R
+    - id: PjeNtX9cDx
       formula: '[Custom SQL/STORE_NAME]'
-    - id: vgKISTvvhA
+    - id: Z8MIIWChPP
       formula: '[Custom SQL/STORE_KEY]'
-    - id: FT5h3ePIz7
+    - id: ui3M6jOTGx
       formula: '[Custom SQL/STORE_REGION]'
-    - id: 3PpIkCzD6N
+    - id: v3qB7l8XW-
       formula: '[Custom SQL/STORE_STATE]'
-    - id: yDrhgOGJ_l
+    - id: QNmwAnfNIO
       formula: '[Custom SQL/STORE_CITY]'
-    - id: OYFQNRUBS5
+    - id: heDRLaPw_g
       formula: '[Custom SQL/STORE_ZIP_CODE]'
-    - id: JZWuZ3kbEL
+    - id: QIfFnEyaSj
       formula: '[Custom SQL/STORE_LATITUDE]'
-    - id: EJO6zf7g9t
+    - id: yzwNrfUTsf
       formula: '[Custom SQL/STORE_LONGITUDE]'
-    - id: v6DKbw6vL0
+    - id: zHfe1UDK0G
       formula: '[Custom SQL/CUST_KEY]'
-    - id: 9aiebtgngf
+    - id: StGSGOZ4Wv
       formula: '[Custom SQL/CUSTOMER_NAME]'
-    - id: Ab9z12DwcY
+    - id: gVfWBCLd4j
       formula: '[Custom SQL/CUST_JSON]'
     order:
-    - pU5HHvF00U
-    - 1ksP_UUdV9
-    - HNSPfrWzLQ
-    - vb2cGFwcqU
-    - lRzP1Qz-Wb
-    - F9F0GHcpwg
-    - 4BGNLZxE88
-    - aWOwmFrZXE
-    - 0MD5c2M1mT
-    - FUbQJ0EfF-
-    - md3vSe7m1L
-    - qs8z7L9R6R
-    - vgKISTvvhA
-    - FT5h3ePIz7
-    - 3PpIkCzD6N
-    - yDrhgOGJ_l
-    - OYFQNRUBS5
-    - JZWuZ3kbEL
-    - EJO6zf7g9t
-    - v6DKbw6vL0
-    - 9aiebtgngf
-    - Ab9z12DwcY
+    - clunIlkLIZ
+    - j4M9TuzNZU
+    - nkmaVDBkJe
+    - 6T_IKMFhVh
+    - Lak6O2OCy8
+    - P53TEhlgWv
+    - LVUE21RQOv
+    - hC08ckxpDi
+    - ae48BWZPkC
+    - plof3fCo8Y
+    - aE-jvcMQeU
+    - PjeNtX9cDx
+    - Z8MIIWChPP
+    - ui3M6jOTGx
+    - v3qB7l8XW-
+    - QNmwAnfNIO
+    - heDRLaPw_g
+    - QIfFnEyaSj
+    - yzwNrfUTsf
+    - zHfe1UDK0G
+    - StGSGOZ4Wv
+    - gVfWBCLd4j
+success: true
